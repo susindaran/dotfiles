@@ -19,6 +19,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'albfan/nerdtree-git-plugin'
 
 " ----- Git -----
 Plugin 'airblade/vim-gitgutter'
@@ -32,6 +33,7 @@ Plugin 'alvan/vim-closetag'
 Plugin 'prettier/vim-prettier'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'Chiel92/vim-autoformat'
 
 call vundle#end()
 
@@ -126,7 +128,7 @@ augroup mydelimitMate
 augroup END
 
 " ----- alvan/vim-closetag -----
-" Add >  at current position without closing the current tag 
+" Add >  at current position without closing the current tag
 let g:closetag_close_shortcut = '<leader>>'
 
 " These are the file extensions where this plugin is enabled.
@@ -153,3 +155,6 @@ imap <Leader>s <Esc><Leader>s
 nmap <F2> :w<CR>
 vmap <F2> <Esc><F2>gv
 imap <F2> <Esc><F2>
+
+"   -- AutoFormat --
+noremap <F3> :Autoformat<CR>
