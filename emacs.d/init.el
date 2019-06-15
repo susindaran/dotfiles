@@ -49,9 +49,7 @@
 ;; NerdTREE like project tree GUI
 (use-package neotree
   :bind
-  ([f8] . neotree-toggle)
-  :requires
-  (projectile)
+  ("M-[" . neotree-toggle)
   :config
   ;; To change neotree to project root when switching projects with
   ;; projectile
