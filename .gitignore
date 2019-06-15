@@ -1,0 +1,9 @@
+# Emacs
+.last-package-update-day
+auto-save-list
+backups
+elpa/
+*.elc
+ido.last
+projectile-bookmarks.eld
+session.*

@@ -1,3 +1,10 @@
+;; Set path to dependencies
+(setq settings-dir
+      (expand-file-name "settings" user-emacs-directory))
+
+;; Set up load path
+(add-to-list 'load-path settings-dir)
+
 ;; #############################################
 ;; PACKAGES
 ;; #############################################
@@ -12,37 +19,66 @@
 (eval-when-compile
   (require 'use-package))
 
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
 ;; Automatically update packages
 (use-package auto-package-update
-  :ensure t
   :config
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
+
+;; Defaults
+(require 'defaults)
+
+;; Custom appearance settings
+(require 'appearance)
 
 ;; GUI theme
 (use-package dracula-theme)
 
 ;; For project interaction
 (use-package projectile
-  :ensure t
   :bind-keymap
-  ("C-c p" . projectile-command-map)
+  ("M-p" . projectile-command-map)
   :config
-  (projectile-mode +1))
+  (projectile-mode +1)
+  (setq projectile-project-search-path '("~/Projects/")))
 
 ;; NerdTREE like project tree GUI
 (use-package neotree
-  :ensure t
+  :bind
+  ([f8] . neotree-toggle)
+  :requires
+  (projectile)
   :config
-  (global-set-key [f8] 'neotree-toggle))
+  ;; To change neotree to project root when switching projects with
+  ;; projectile
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (setq neo-show-hidden-files t))
+
+;; Window and Frame switcher
+(use-package ace-window
+  :bind
+  ("M-o" . ace-window)
+  :config
+  (setq aw-dispatch-always t))
+
+;; For jumping around text
+(use-package ace-jump-mode
+  :bind
+  ("M-;" . ace-jump-mode))
+
+;; Frame Management
+(use-package elscreen
+  :config
+  (setq elscreen-prefix-key "\M-z")
+  (elscreen-start))
 
 ;; #############################################
 ;; ### General Configurations
 ;; #############################################
-
-
-(global-linum-mode 1)
 
 (setq ido-enable-flex-matching t)
 (ido-mode 1)
@@ -59,7 +95,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (auto-package-update neotree dracula-theme projectile use-package))))
+    (elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme projectile use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
