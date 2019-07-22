@@ -32,6 +32,9 @@
 ;; Defaults
 (require 'defaults)
 
+;; Key bindings
+(require 'key-bindings)
+
 ;; Custom appearance settings
 (require 'appearance)
 
