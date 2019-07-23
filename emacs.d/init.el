@@ -39,7 +39,7 @@
 (require 'appearance)
 
 ;; GUI theme
-(use-package nord-theme)
+(use-package dracula-theme)
 
 ;; For project interaction
 (use-package projectile
@@ -47,7 +47,7 @@
   ("M-p" . projectile-command-map)
   :config
   (projectile-mode +1)
-  (setq projectile-project-search-path '("~/Projects/")))
+  (setq projectile-project-search-path '("~/projects/")))
 
 ;; NerdTREE like project tree GUI
 (use-package neotree
