@@ -1,3 +1,9 @@
+;; Set font-size
+(set-face-attribute 'default nil :height 160)
+
+;; Start emacs window maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; turn on line and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
