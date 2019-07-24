@@ -75,14 +75,9 @@
 (use-package elscreen
   :config
   (setq elscreen-prefix-key "\M-z")
-  (elscreen-start))
-
-;; #############################################
-;; ### General Configurations
-;; #############################################
-
-(setq ido-enable-flex-matching t)
-(ido-mode 1)
+  (elscreen-start)
+  (global-set-key (kbd "s-{") 'elscreen-previous)
+  (global-set-key (kbd "s-}") 'elscreen-next))
 
 ;; #############################################
 ;; Auto-set configurations

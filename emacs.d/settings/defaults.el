@@ -30,10 +30,15 @@
 (defalias 'list-buffers 'ibuffer)
 
 ;; ido-mode settings
+(setq ido-enable-flex-matching t)
+(ido-mode 1)
+
 ;; display items vertically
 (setq ido-separator "\n")
+
 ;; use current pane for newly opened file
 (setq ido-default-file-method 'selected-window)
+
 ;; use current pane for newly switched buffer
 (setq ido-default-buffer-method 'selected-window)
 
