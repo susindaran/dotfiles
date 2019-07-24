@@ -29,15 +29,6 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
-;; Defaults
-(require 'defaults)
-
-;; Key bindings
-(require 'key-bindings)
-
-;; Custom appearance settings
-(require 'appearance)
-
 ;; GUI theme
 (use-package dracula-theme)
 
@@ -78,6 +69,15 @@
   (elscreen-start)
   (global-set-key (kbd "s-{") 'elscreen-previous)
   (global-set-key (kbd "s-}") 'elscreen-next))
+
+;; Defaults
+(require 'defaults)
+
+;; Key bindings
+(require 'key-bindings)
+
+;; Custom appearance settings
+(require 'appearance)
 
 ;; #############################################
 ;; Auto-set configurations
