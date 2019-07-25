@@ -48,7 +48,10 @@
   ;; To change neotree to project root when switching projects with
   ;; projectile
   (setq projectile-switch-project-action 'neotree-projectile-action)
-  (setq neo-show-hidden-files t))
+  (setq neo-show-hidden-files t)
+  ;; Every time when neotree window is opened, let it find the current
+  ;; file and jump to the node.
+  (setq neo-smart-open t))
 
 ;; Window and Frame switcher
 (use-package ace-window
