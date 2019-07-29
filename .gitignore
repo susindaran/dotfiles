@@ -7,3 +7,6 @@ elpa/
 ido.last
 projectile-bookmarks.eld
 session.*
+*.cache
+transient/
+recentf
