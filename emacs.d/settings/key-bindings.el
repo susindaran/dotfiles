@@ -25,10 +25,7 @@
 
 ;; helm-projectile bindings
 ;; Switch project
-(global-set-key (kbd "M-p") 'helm-projectile-switch-project)
-
-;; Find file in project
-(global-set-key (kbd "s-O") 'helm-projectile-find-file)
+(global-set-key (kbd "M-P") 'helm-projectile-switch-project)
 
 ;; Search this file using ag
 (global-set-key (kbd "s-f") 'helm-do-ag-this-file)
@@ -51,5 +48,12 @@
 
 ;; Org capture tasks
 (global-set-key (kbd "C-c c") 'org-capture)
+
+;; #############################################
+;; Other key-bindings
+;; #############################################
+
+;; Find file using fzf
+(global-set-key (kbd "s-O") 'helm-fzf-project-root)
 
 (provide 'key-bindings)

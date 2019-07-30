@@ -1,3 +1,7 @@
+;; Using bash shell because zsh for some reason slows down
+;; helm-projectile-find-file
+(setq shell-file-name "/bin/bash")
+
 ;; stop creating backup~ files
 (setq make-backup-files nil)
 
@@ -33,7 +37,7 @@
 (set-default 'sentence-end-double-space nil)
 
 ;; Show matching parentheses without any delay
-(setq show-paren-delay 0)
+(defvar show-paren-delay 0)
 
 ;; Select help window when opened
 (setq help-window-select t)
@@ -53,4 +57,4 @@
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
-(provide 'defaults)
+(provide 'default-settings)

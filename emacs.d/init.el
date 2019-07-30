@@ -1,5 +1,5 @@
 ;; Set path to dependencies
-(setq settings-dir
+(defvar settings-dir
       (expand-file-name "settings" user-emacs-directory))
 
 ;; Set up load path
@@ -65,7 +65,7 @@
   :config
   ;; To change neotree to project root when switching projects with
   ;; projectile
-  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (defvar projectile-switch-project-action 'neotree-projectile-action)
   (setq neo-show-hidden-files t)
   ;; Every time when neotree window is opened, let it find the current
   ;; file and jump to the node.
@@ -96,16 +96,17 @@
   :config
   (require 'helm-config)
   (setq
-   helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-   helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-   helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-   helm-ff-file-name-history-use-recentf t
-   helm-echo-input-in-header-line        t
-   helm-autoresize-max-height           20
-   helm-autoresize-min-height            0
-   helm-M-x-fuzzy-match                  t
-   helm-buffers-fuzzy-matching           t
-   helm-recentf-fuzzy-match              t)
+   helm-split-window-inside-p      t ; open helm buffer inside current window, not occupy whole other window
+   helm-scroll-amount              8 ; scroll 8 lines other window using M-<next>/M-<prior>
+   helm-echo-input-in-header-line  t
+   helm-autoresize-max-height     20
+   helm-autoresize-min-height      0)
+  ;; search for library in `require' and `declare-function' sexp.
+  (defvar helm-ff-search-library-in-sexp        t)
+  (defvar helm-ff-file-name-history-use-recentf t)
+  (defvar helm-M-x-fuzzy-match                  t)
+  (defvar helm-buffers-fuzzy-matching           t)
+  (defvar helm-recentf-fuzzy-match              t)
   (helm-autoresize-mode 1)
   (helm-mode 1))
 
@@ -113,9 +114,10 @@
 (use-package helm-projectile
   :config
   (add-to-list 'projectile-known-projects "~/org/")
-  (projectile-global-mode)
+  (projectile-mode)
   (setq projectile-completion-system 'helm)
   (setq projectile-enable-caching t)
+  (setq projectile-switch-project-action 'helm-projectile)
 
   (helm-projectile-on)
   :after (helm)
@@ -156,14 +158,20 @@
 ;; YAML
 (use-package yaml-mode)
 
+;; Auto-completion framework
+(use-package company
+  :config (global-company-mode))
+
 ;; Defaults
-(require 'defaults)
+(require 'default-settings)
 
 ;; Key bindings
 (require 'key-bindings)
 
 ;; Custom appearance settings
 (require 'appearance)
+
+(require 'helm-fzf)
 
 ;; #############################################
 ;; Auto-set configurations
@@ -177,7 +185,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
+    (company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
