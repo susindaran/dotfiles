@@ -50,6 +50,49 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 ;; #############################################
+;; Text editing key-bindings
+;; #############################################
+
+(defun delete-word (arg)
+  "Delete characters forward until encoutering the end of a word. With argument,
+do this that many times. This command does not push text to kill-ring"
+  (interactive "p")
+  (delete-region
+   (point)
+   (progn
+     (forward-word arg)
+     (point))))
+
+(defun delete-word-backward (arg)
+  "Delete character backward until encountering the beginning of a word. With
+argument, do this that many times. This command does not push text to kill-ring"
+  (interactive "p")
+  (delete-word (- arg)))
+
+(defun delete-line ()
+  "Delete text from current position to end of line character. This command does
+not push text to kill-ring"
+  (interactive)
+  (delete-region
+   (point)
+   (progn (end-of-line 1) (point))))
+
+(defun delete-line-backward ()
+  "Delete text between the beginning of the line to the current poisition. This
+command does not push text to kill-ring"
+  (interactive)
+  (let (point1 point2)
+    (setq point1 (point))
+    (beginning-of-line 1)
+    (setq point2 (point))
+    (delete-region point1 point2)))
+
+(global-set-key (kbd "C-k") 'delete-line)
+(global-set-key (kbd "C-S-k") 'delete-line-backward)
+(global-set-key (kbd "M-d") 'delete-word)
+(global-set-key (kbd "<M-backspace>") 'delete-word-backward)
+
+;; #############################################
 ;; Other key-bindings
 ;; #############################################
 
