@@ -46,6 +46,9 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 2) ((control) . nil)))
 (setq mouse-wheel-progressive-speed nil)
 
+;; Scroll one line at a time
+(setq scroll-conservatively 1)
+
 ;; Set column size to 80 characters in org-mode
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
