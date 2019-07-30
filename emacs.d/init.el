@@ -162,6 +162,17 @@
 (use-package company
   :config (global-company-mode))
 
+;; Jump to definition (dumb but effective)
+(use-package dumb-jump
+  :config
+  (progn
+    (define-prefix-command 'dj-prefix)
+    (define-key dj-prefix (kbd "j") 'dumb-jump-go)
+    (define-key dj-prefix (kbd "o") 'dumb-jump-go-other-window)
+    (define-key dj-prefix (kbd "q") 'dumb-jump-quick-look))
+  (global-set-key (kbd "M-j") 'dj-prefix)
+  (setq dumb-jump-force-searcher 'rg))
+
 ;; Defaults
 (require 'default-settings)
 
@@ -171,6 +182,7 @@
 ;; Custom appearance settings
 (require 'appearance)
 
+;; For finding files using fzf
 (require 'helm-fzf)
 
 ;; #############################################
@@ -185,7 +197,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
+    (dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
