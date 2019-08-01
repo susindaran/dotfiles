@@ -60,4 +60,15 @@
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
+;; #############################################
+;; Org-mode settings
+;; #############################################
+
+;; ! - log timestamp
+;; @ - log timestamp with note
+(defvar org-todo-keywords '((sequence "TODO(t)" "DOING(o!)" "|" "DONE(d!)" "CANCELLED(c@)")))
+
+;; Logs the todo timestamps and notes to the "LOGBOOK" drawer
+(defvar org-log-into-drawer t)
+
 (provide 'default-settings)
