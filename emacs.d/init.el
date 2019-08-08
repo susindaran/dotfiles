@@ -58,6 +58,12 @@
   :bind
   ("C-a" . crux-move-beginning-of-line))
 
+;; Git interface
+(use-package magit
+  :bind
+  ("C-x g" . magit-status)
+  ("C-x M-b" . magit-blame))
+
 ;; NerdTREE like project tree GUI
 (use-package neotree
   :bind
