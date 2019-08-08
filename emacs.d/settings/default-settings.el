@@ -68,6 +68,9 @@
 ;; @ - log timestamp with note
 (defvar org-todo-keywords '((sequence "TODO(t)" "DOING(o!)" "|" "DONE(d!)" "CANCELLED(c@)")))
 
+;; Modify colors for different todo states
+(defvar org-todo-keyword-faces '(("DOING" . "yellow")))
+
 ;; Logs the todo timestamps and notes to the "LOGBOOK" drawer
 (defvar org-log-into-drawer t)
 
