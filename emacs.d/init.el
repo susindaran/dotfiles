@@ -89,13 +89,26 @@
   :bind
   ("M-;" . ace-jump-mode))
 
-;; Frame Management
-(use-package elscreen
+;; Frame/Window management
+(use-package centaur-tabs
+  :init
+  (setq centaur-tabs-style "bar")
+  (setq centaur-tabs-gray-out-icons 'buffer)
+  (setq centaur-tabs-set-bar 'over)
+  (setq centaur-tabs-set-modified-marker t)
+  (setq centaur-tabs-modified-marker "*")
+  (defvar centaur-tabs-icons t)
   :config
-  (setq elscreen-prefix-key "\M-z")
-  (elscreen-start)
-  (global-set-key (kbd "s-{") 'elscreen-previous)
-  (global-set-key (kbd "s-}") 'elscreen-next))
+  (centaur-tabs-headline-match)
+  (centaur-tabs-group-by-projectile-project)
+  (centaur-tabs-mode t)
+  :bind
+  ;; Switch tabs
+  ("s-{" . centaur-tabs-backward)
+  ("s-}" . centaur-tabs-forward)
+  ;; Switch tab groups (grouped by projectile projects)
+  ("s-[" . centaur-tabs-backward-group)
+  ("s-]" . centaur-tabs-forward-group))
 
 ;; Helm to the resuce
 (use-package helm
