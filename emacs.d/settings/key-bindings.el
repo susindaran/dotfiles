@@ -102,4 +102,7 @@ command does not push text to kill-ring"
 ;; Find file using fzf
 (global-set-key (kbd "s-O") 'helm-fzf-project-root)
 
+;; Open imenu (helps see the structure of the file)
+(global-set-key (kbd "s-i") 'imenu)
+
 (provide 'key-bindings)

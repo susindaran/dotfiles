@@ -196,7 +196,8 @@
     (define-prefix-command 'dj-prefix)
     (define-key dj-prefix (kbd "j") 'dumb-jump-go)
     (define-key dj-prefix (kbd "o") 'dumb-jump-go-other-window)
-    (define-key dj-prefix (kbd "q") 'dumb-jump-quick-look))
+    (define-key dj-prefix (kbd "q") 'dumb-jump-quick-look)
+    (define-key dj-prefix (kbd "b") 'dumb-jump-back))
   (global-set-key (kbd "M-j") 'dj-prefix)
   (setq dumb-jump-force-searcher 'rg))
 
