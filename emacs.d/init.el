@@ -201,6 +201,11 @@
   (global-set-key (kbd "M-j") 'dj-prefix)
   (setq dumb-jump-force-searcher 'rg))
 
+;; Folding
+(use-package yafolding
+  :config
+  (add-hook 'prog-mode-hook (lambda () (yafolding-mode))))
+
 ;; Defaults
 (require 'default-settings)
 
