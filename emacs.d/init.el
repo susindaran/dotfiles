@@ -236,4 +236,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-level-1 ((t (:inherit alect-title-1 :foreground "#DFAF8F" :height 200))))
+ '(org-todo ((t (:background "#373844" :foreground "OrangeRed2" :weight bold)))))
