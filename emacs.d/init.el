@@ -163,6 +163,13 @@
     (setq ruby-insert-encoding-magic-comment nil))
   (add-hook 'ruby-mode-hook 'my-ruby-mode-hook))
 
+;; golang
+(use-package go-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+  (defvar gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save))
+
 ;; Terraform
 (use-package terraform-mode)
 
@@ -230,7 +237,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (org-bullets ws-butler lsp-mode company-lsp lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
+    (go-mode org-bullets ws-butler lsp-mode company-lsp lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
