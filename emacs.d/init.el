@@ -109,7 +109,10 @@
   ("s-}" . centaur-tabs-forward)
   ;; Switch tab groups (grouped by projectile projects)
   ("s-[" . centaur-tabs-backward-group)
-  ("s-]" . centaur-tabs-forward-group))
+  ("s-]" . centaur-tabs-forward-group)
+  ;; Move tab positions
+  ("C-{" . centaur-tabs-move-current-tab-to-left)
+  ("C-}" . centaur-tabs-move-current-tab-to-right))
 
 ;; Helm to the resuce
 (use-package helm
