@@ -37,7 +37,7 @@
 (set-default 'sentence-end-double-space nil)
 
 ;; Show matching parentheses without any delay
-(defvar show-paren-delay 0)
+(setq show-paren-delay 0)
 
 ;; Select help window when opened
 (setq help-window-select t)
@@ -66,12 +66,12 @@
 
 ;; ! - log timestamp
 ;; @ - log timestamp with note
-(defvar org-todo-keywords '((sequence "TODO(t)" "DOING(o!)" "|" "DONE(d!)" "CANCELLED(c@)")))
+(setq org-todo-keywords '((sequence "TODO(t)" "DOING(o!)" "|" "DONE(d!)" "CANCELLED(c@)")))
 
 ;; Modify colors for different todo states
-(defvar org-todo-keyword-faces '(("DOING" . "yellow")))
+(setq org-todo-keyword-faces '(("DOING" . "yellow")))
 
 ;; Logs the todo timestamps and notes to the "LOGBOOK" drawer
-(defvar org-log-into-drawer t)
+(setq org-log-into-drawer t)
 
 (provide 'default-settings)

@@ -1,5 +1,5 @@
 ;; Set path to dependencies
-(defvar settings-dir
+(setq settings-dir
       (expand-file-name "settings" user-emacs-directory))
 
 ;; Set up load path
@@ -72,7 +72,7 @@
   :config
   ;; To change neotree to project root when switching projects with
   ;; projectile
-  (defvar projectile-switch-project-action 'neotree-projectile-action)
+  (setq projectile-switch-project-action 'neotree-projectile-action)
   (setq neo-show-hidden-files t)
   ;; Every time when neotree window is opened, let it find the current
   ;; file and jump to the node.
@@ -98,7 +98,7 @@
   (setq centaur-tabs-set-bar 'over)
   (setq centaur-tabs-set-modified-marker t)
   (setq centaur-tabs-modified-marker "*")
-  (defvar centaur-tabs-icons t)
+  (setq centaur-tabs-icons t)
   :config
   (centaur-tabs-headline-match)
   (centaur-tabs-group-by-projectile-project)
@@ -125,11 +125,11 @@
    helm-autoresize-max-height     20
    helm-autoresize-min-height      0)
   ;; search for library in `require' and `declare-function' sexp.
-  (defvar helm-ff-search-library-in-sexp        t)
-  (defvar helm-ff-file-name-history-use-recentf t)
-  (defvar helm-M-x-fuzzy-match                  t)
-  (defvar helm-buffers-fuzzy-matching           t)
-  (defvar helm-recentf-fuzzy-match              t)
+  (setq helm-ff-search-library-in-sexp        t)
+  (setq helm-ff-file-name-history-use-recentf t)
+  (setq helm-M-x-fuzzy-match                  t)
+  (setq helm-buffers-fuzzy-matching           t)
+  (setq helm-recentf-fuzzy-match              t)
   (helm-autoresize-mode 1)
   (helm-mode 1))
 
@@ -171,7 +171,7 @@
 (use-package go-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
-  (defvar gofmt-command "goimports")
+  (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save))
 
 ;; Terraform

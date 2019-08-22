@@ -27,7 +27,7 @@
            when (locate-dominating-file default-directory dir)
            return it))
 
-(defvar helm-fzf-source
+(setq helm-fzf-source
   (helm-build-async-source "fzf"
     :candidates-process 'helm-fzf--do-candidate-process
     :filter-one-by-one 'identity
