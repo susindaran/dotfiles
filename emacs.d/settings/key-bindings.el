@@ -75,7 +75,8 @@ not push text to kill-ring"
   (interactive)
   (delete-region
    (point)
-   (progn (end-of-line 1) (point))))
+   (progn (end-of-line 1) (point)))
+  (delete-char 1))
 
 (defun delete-line-backward ()
   "Delete text between the beginning of the line to the current poisition. This
