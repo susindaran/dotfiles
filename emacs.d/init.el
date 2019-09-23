@@ -61,6 +61,9 @@
 
 ;; Git interface
 (use-package magit
+  :init
+  (setq magit-repository-directories
+	'(("~/projects/" . 2)))
   :bind
   ("C-x g" . magit-status)
   ("C-x M-b" . magit-blame))
@@ -90,30 +93,6 @@
   :bind
   ("M-;" . ace-jump-mode))
 
-;; Frame/Window management
-(use-package centaur-tabs
-  :init
-  (setq centaur-tabs-style "bar")
-  (setq centaur-tabs-gray-out-icons 'buffer)
-  (setq centaur-tabs-set-bar 'over)
-  (setq centaur-tabs-set-modified-marker t)
-  (setq centaur-tabs-modified-marker "*")
-  (setq centaur-tabs-icons t)
-  :config
-  (centaur-tabs-headline-match)
-  (centaur-tabs-group-by-projectile-project)
-  (centaur-tabs-mode t)
-  :bind
-  ;; Switch tabs
-  ("s-{" . centaur-tabs-backward)
-  ("s-}" . centaur-tabs-forward)
-  ;; Switch tab groups (grouped by projectile projects)
-  ("s-[" . centaur-tabs-backward-group)
-  ("s-]" . centaur-tabs-forward-group)
-  ;; Move tab positions
-  ("C-{" . centaur-tabs-move-current-tab-to-left)
-  ("C-}" . centaur-tabs-move-current-tab-to-right))
-
 ;; Helm to the resuce
 (use-package helm
   :config
@@ -136,15 +115,44 @@
 ;; Make projectile even better
 (use-package helm-projectile
   :config
-  (add-to-list 'projectile-known-projects "~/org/")
   (projectile-mode)
   (setq projectile-completion-system 'helm)
   (setq projectile-enable-caching t)
   (setq projectile-switch-project-action 'helm-projectile)
-
   (helm-projectile-on)
-  :after (helm)
+  (when (require 'magit nil t)
+    (mapc #'projectile-add-known-project
+          (mapcar #'file-name-as-directory (magit-list-repos)))
+    (projectile-save-known-projects))
+  (dolist (item '("~/org/")) (add-to-list 'projectile-known-projects item))
   :requires helm)
+
+;; Frame/Window management
+(use-package centaur-tabs
+  :init
+  (setq centaur-tabs-style "bar")
+  (setq centaur-tabs-gray-out-icons 'buffer)
+  (setq centaur-tabs-set-bar 'over)
+  (setq centaur-tabs-set-modified-marker t)
+  (setq centaur-tabs-modified-marker "*")
+  (setq centaur-tabs-icons t)
+  (setq centaur-tabs-cycle-scope 'tabs)
+  :config
+  (centaur-tabs-mode t)
+  (centaur-tabs-headline-match)
+  (centaur-tabs-group-by-projectile-project)
+  :bind
+  ;; Switch tabs
+  ("s-{" . centaur-tabs-backward)
+  ("s-}" . centaur-tabs-forward)
+  ;; Switch tab groups (grouped by projectile projects)
+  ("s-[" . centaur-tabs-backward-group)
+  ("s-]" . centaur-tabs-forward-group)
+  ;; Move tab positions
+  ("C-{" . centaur-tabs-move-current-tab-to-left)
+  ("C-}" . centaur-tabs-move-current-tab-to-right)
+  :after (helm-projectile)
+  :requires helm-projectile)
 
 ;; Let's not forget ag
 (use-package helm-ag
@@ -248,7 +256,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (company-go go-mode org-bullets ws-butler lsp-mode company-lsp lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
+    (centaur-tabs company-go go-mode org-bullets ws-butler lsp-mode company-lsp lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
