@@ -109,4 +109,7 @@ command does not push text to kill-ring"
 ;; Open imenu (helps see the structure of the file)
 (global-set-key (kbd "s-i") 'imenu)
 
+Toggle comment in the region
+(global-set-key (kbd "s-/") 'comment-or-uncomment-region)
+
 (provide 'key-bindings)
