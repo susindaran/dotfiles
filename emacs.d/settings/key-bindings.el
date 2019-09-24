@@ -28,7 +28,7 @@
 (global-set-key (kbd "M-P") 'helm-projectile-switch-project)
 
 ;; Find file
-(global-set-key (kbd "M-O") 'helm-projectile-find-file)
+(global-set-key (kbd "M-O") 'projectile-find-file)
 
 ;; Search this file using ag
 (global-set-key (kbd "s-f") 'helm-do-ag-this-file)
