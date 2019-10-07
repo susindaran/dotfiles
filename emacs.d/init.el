@@ -229,6 +229,7 @@
     (define-key dj-prefix (kbd "q") 'dumb-jump-quick-look)
     (define-key dj-prefix (kbd "b") 'dumb-jump-back))
   (global-set-key (kbd "M-j") 'dj-prefix)
+  (setq dumb-jump-selector 'helm)
   (setq dumb-jump-force-searcher 'rg))
 
 ;; Folding
