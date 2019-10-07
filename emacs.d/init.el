@@ -151,6 +151,8 @@
   ;; Move tab positions
   ("C-{" . centaur-tabs-move-current-tab-to-left)
   ("C-}" . centaur-tabs-move-current-tab-to-right)
+  ;; Kill other tabs in current group
+  ("s-K" . centaur-tabs-kill-other-buffers-in-current-group)
   :after (helm-projectile)
   :requires helm-projectile)
 
