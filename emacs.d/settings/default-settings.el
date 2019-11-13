@@ -45,6 +45,8 @@
 ;; Smooth scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 2) ((control) . nil)))
 (setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse t)
+(setq scroll-step 1)
 
 ;; Scroll one line at a time
 (setq scroll-conservatively 1)
