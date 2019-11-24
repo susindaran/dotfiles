@@ -5,6 +5,20 @@
 ln -s dotfiles/emacs.d ~/.emacs.d
 ```
 
+## Prerequisites
+### use-package
+Opening emacs for the first time after linking to the config won't load any
+package. `use-package` needs to be installed manually first.
+`M-x package-install<RET>`
+`use-package<RET>`
+
+Close and re-open emacs.
+
+### fzf
+`s-O` is bound to `helm-fzf-project-root` (find file in project root) which requries fzf
+
+Installing fzf by following the instructions from [here](https://github.com/junegunn/fzf/blob/master/README.md#installation) for your platform.
+
 ## Setup ripgrep
 If you want to use ripgrep as the base command for the helm-ag plugin, symlink
 the `rg-wrapper` script to /usr/local/bin/rg-wrapper.
@@ -20,14 +34,6 @@ Add the following under `:config` of `use-package helm-ag`
 ```
 (setq helm-ag-base-command "rg-wrapper --vimgrep --no-heading --smart-case")
 ```
-
-## Install prerequisite
-Opening emacs for the first time after linking to the config won't load any
-package. `use-package` needs to be installed manually first.
-`M-x package-install<RET>`
-`use-package<RET>`
-
-Close and re-open emacs.
 
 ## Configure projects
 This config use projectile for project management. To configure projectile to
