@@ -2,6 +2,7 @@
 (set-face-attribute 'default nil :height 110)
 
 ;; Org-mode font settings
+(require 'org)
 (set-face-attribute 'org-level-1 nil :inherit 'alect-title-1 :foreground "#DFAF8F" :height 150)
 (set-face-attribute 'org-todo nil :foreground "OrangeRed2" :weight 'bold)
 
