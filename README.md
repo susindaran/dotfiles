@@ -14,10 +14,16 @@ package. `use-package` needs to be installed manually first.
 
 Close and re-open emacs.
 
+### The Silver Searcher
+`s-f` and `s-F` is bound to search in the file and search across the project
+using the-silver-searcher (`ag`).
+
+Install ag by following the instructions from [here](https://github.com/ggreer/the_silver_searcher)
+
 ### fzf
 `s-O` is bound to `helm-fzf-project-root` (find file in project root) which requries fzf
 
-Installing fzf by following the instructions from [here](https://github.com/junegunn/fzf/blob/master/README.md#installation) for your platform.
+Install fzf by following the instructions from [here](https://github.com/junegunn/fzf/blob/master/README.md#installation) for your platform.
 
 ## Setup ripgrep
 If you want to use ripgrep as the base command for the helm-ag plugin, symlink
