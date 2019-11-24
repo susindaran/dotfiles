@@ -163,8 +163,6 @@
   (setq helm-ag-fuzzy-match t)
   ;; Use .agignore file at project root
   (setq helm-ag-use-agignore t)
-  ;; Use ripgrep instead of ag
-  (setq helm-ag-base-command "rg-wrapper --vimgrep --no-heading --smart-case")
   :after (helm)
   :requires helm)
 

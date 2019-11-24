@@ -14,6 +14,13 @@ brew install ripgrep
 ln -s dotfiles/rg-wrapper /usr/local/bin/.
 ```
 
+Add the following under `:config` of `use-package helm-ag`
+
+
+```
+(setq helm-ag-base-command "rg-wrapper --vimgrep --no-heading --smart-case")
+```
+
 ## Install prerequisite
 Opening emacs for the first time after linking to the config won't load any
 package. `use-package` needs to be installed manually first.
