@@ -246,8 +246,7 @@
 (require 'key-bindings)
 
 ;; Load linux specific key-bindings
-(load-file (expand-file-name
-            (cond ((eq system-type 'gnu/linux) "settings/linux-key-bindings.el")) user-emacs-directory))
+(cond ((eq system-type 'gnu/linux) (load-file (expand-file-name "settings/linux-key-bindings.el" user-emacs-directory))))
 
 ;; Custom appearance settings
 (require 'appearance)
