@@ -99,6 +99,14 @@ command does not push text to kill-ring"
  ("M-d" . delete-word)
  ("<M-backspace>" . delete-word-backward))
 
+(defun minify-buffer()
+  "Minifies the buffer contents by removing whitespaces and newlines"
+  (interactive)
+  (delete-whitespace-rectangle (point-min) (point-max))
+  (mark-whole-buffer)
+  (goto-char (point-min))
+  (while (search-forward "\n" nil t) (replace-match "" nil t)))
+
 ;; #############################################
 ;; Other key-bindings
 ;; #############################################
