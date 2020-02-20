@@ -1,6 +1,9 @@
 ;; Set font-size
 (set-face-attribute 'default nil :height 110)
 
+;; Highlight font settings
+(set-face-attribute 'highlight nil :background "gray53" :foreground "gray100")
+
 ;; Org-mode font settings
 (require 'org)
 (set-face-attribute 'org-level-1 nil :inherit 'alect-title-1 :foreground "#DFAF8F" :height 150)
