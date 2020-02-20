@@ -1,5 +1,5 @@
 ;; Set path to dependencies
-(setq settings-dir
+(defvar settings-dir
       (expand-file-name "settings" user-emacs-directory))
 
 ;; Set up load path
@@ -240,19 +240,23 @@
   (smooth-scrolling-mode))
 
 ;; Defaults
-(require 'default-settings)
+(use-package default-settings
+  :load-path "settings/default-settings.el")
 
 ;; Key bindings
-(require 'key-bindings)
+(use-package key-bindings
+  :load-path "settings/key-bindings.el")
 
 ;; Load linux specific key-bindings
 (cond ((eq system-type 'gnu/linux) (load-file (expand-file-name "settings/linux-key-bindings.el" user-emacs-directory))))
 
 ;; Custom appearance settings
-(require 'appearance)
+(use-package appearance
+  :load-path "settings/appearance.el")
 
 ;; For finding files using fzf
-(require 'helm-fzf)
+(use-package helm-fzf
+  :load-path "settings/helm-fzf.el")
 
 ;; #############################################
 ;; Auto-set configurations
@@ -266,7 +270,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (puppet-mode lsp centaur-tabs company-go go-mode org-bullets ws-butler lsp-mode company-lsp lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
+    (puppet-mode helm-ag helm-projectile helm lsp centaur-tabs company-go go-mode org-bullets ws-butler lsp-mode company-lsp lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
