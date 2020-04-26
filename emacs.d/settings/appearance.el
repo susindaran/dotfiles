@@ -52,5 +52,8 @@
   :config
   (add-hook 'after-make-frame-functions #'enable-doom-modeline-icons))
 
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 (provide 'appearance)
 ;;; appearance.el ends here
