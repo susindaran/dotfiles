@@ -264,6 +264,10 @@
 (use-package appearance
   :load-path "settings/appearance.el")
 
+;; Javascript settings
+(use-package js-settings
+  :load-path "settings/js-settings.el")
+
 ;; For finding files using fzf
 (use-package helm-fzf
   :load-path "settings/helm-fzf.el")
@@ -280,7 +284,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (puppet-mode helm-ag helm-projectile helm lsp centaur-tabs company-go go-mode org-bullets ws-butler lsp-mode company-lsp lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
+    (all-the-icons doom-modeline prettier-js tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs company-go go-mode org-bullets ws-butler lsp-mode company-lsp lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
