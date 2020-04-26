@@ -1,3 +1,7 @@
+;;; appearance --- Settings that change the appearance of Emacs
+;;; Commentary:
+
+;;; Code:
 ;; Set font-size
 (set-face-attribute 'default nil :height 110)
 
@@ -35,4 +39,18 @@
 ;; no scroll bars
 (scroll-bar-mode -1)
 
+;;; Required by doom-modeline
+(use-package all-the-icons)
+
+;;; Fancy modeline
+(defun enable-doom-modeline-icons (_frame)
+  (setq doom-modeline-icon t))
+
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode)
+  :config
+  (add-hook 'after-make-frame-functions #'enable-doom-modeline-icons))
+
 (provide 'appearance)
+;;; appearance.el ends here
