@@ -10,3 +10,4 @@ session.*
 *.cache
 transient/
 recentf
+*.log
