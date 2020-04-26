@@ -29,6 +29,9 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(use-package use-package-ensure-system-package
+  :ensure t)
+
 ;; Automatically update packages
 (use-package auto-package-update
   :config
@@ -78,7 +81,7 @@
   :config
   ;; To change neotree to project root when switching projects with
   ;; projectile
-  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (defvar projectile-switch-project-action 'neotree-projectile-action)
   (setq neo-show-hidden-files t)
   ;; Every time when neotree window is opened, let it find the current
   ;; file and jump to the node.
@@ -211,7 +214,8 @@
 
 ;; Auto-completion framework
 (use-package company
-  :config (global-company-mode))
+  :hook
+  (after-init . global-company-mode))
 
 ;; Auto-completion for go
 (use-package company-go
@@ -219,6 +223,9 @@
   (add-hook 'go-mode-hook (lambda ()
 			    (set (make-local-variable 'company-backends) '(company-go))
 			    (company-mode))))
+
+(use-package flycheck
+  :init (global-flycheck-mode))
 
 ;; Jump to definition (dumb but effective)
 (use-package dumb-jump
