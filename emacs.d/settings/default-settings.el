@@ -76,4 +76,7 @@
 ;; Logs the todo timestamps and notes to the "LOGBOOK" drawer
 (setq org-log-into-drawer t)
 
+;; Enable auto close parens
+(setq electric-pair-mode t)
+
 (provide 'default-settings)
