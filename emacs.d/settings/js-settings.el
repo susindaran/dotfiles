@@ -19,8 +19,7 @@
    (js-mode . setup-tide-mode)
    (typescript-mode . setup-tide-mode))
   :ensure-system-package
-  ((typescript . "sudo npm install -g typescript")
-   (standardx . "sudo npm install -g standardx"))
+  (standardx . "sudo npm install -g standardx")
   :config
   (defvar company-tooltip-align-annotations t))
 
