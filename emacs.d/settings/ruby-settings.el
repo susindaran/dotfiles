@@ -29,5 +29,8 @@
 
 ;; Enable web-mode for .erb files
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(defvar web-mode-engines-alist
+      '(("erb"    . "\\.erb\\'"))
+)
 
 (provide 'ruby-settings)
