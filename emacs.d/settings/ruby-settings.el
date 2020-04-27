@@ -15,6 +15,18 @@
   (ruby-mode . eldoc-mode)
   (ruby-mode . my-ruby-mode-hook))
 
+;; Auto close paired syntax elements
+(use-package ruby-electric
+  :hook
+  (ruby-mode . ruby-electric-mode))
+
+;; Ruby repl within emacs
+(use-package inf-ruby
+  :config
+  (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
+  :hook
+  (ruby-mode . inf-ruby-minor-mode))
+
 ;; Enable web-mode for .erb files
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 
