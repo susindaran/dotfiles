@@ -182,15 +182,6 @@
   :after (helm)
   :requires helm)
 
-;; Ruby
-(use-package ruby-mode
-  :config
-  (defun my-ruby-mode-hook ()
-    (set-fill-column 80)
-    (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local)
-    (setq ruby-insert-encoding-magic-comment nil))
-  (add-hook 'ruby-mode-hook 'my-ruby-mode-hook))
-
 ;; golang
 (use-package go-mode
   :config
@@ -277,6 +268,10 @@
 ;; Javascript settings
 (use-package js-settings
   :load-path "settings/js-settings.el")
+
+;; Ruby settings
+(use-package ruby-settings
+  :load-path "settings/ruby-settings.el")
 
 ;; For finding files using fzf
 (use-package helm-fzf
