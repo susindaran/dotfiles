@@ -38,4 +38,9 @@
   :ensure-system-package
   (prettier . "sudo npm install -g prettier"))
 
+(use-package web-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode)))
+
 (provide 'js-settings)

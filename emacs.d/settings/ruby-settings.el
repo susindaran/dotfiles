@@ -15,4 +15,7 @@
   (ruby-mode . eldoc-mode)
   (ruby-mode . my-ruby-mode-hook))
 
+;; Enable web-mode for .erb files
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+
 (provide 'ruby-settings)
