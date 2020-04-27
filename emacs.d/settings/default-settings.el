@@ -77,6 +77,6 @@
 (setq org-log-into-drawer t)
 
 ;; Enable auto close parens
-(setq electric-pair-mode t)
+(electric-pair-mode)
 
 (provide 'default-settings)
