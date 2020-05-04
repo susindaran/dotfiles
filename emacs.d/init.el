@@ -289,6 +289,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(centaur-tabs-mode t nil (centaur-tabs))
+ '(exec-path-from-shell-check-startup-files nil)
+ '(exec-path-from-shell-variables (quote ("PATH" "MANPATH" "GOPATH" "GOROOT")))
  '(global-flycheck-mode t)
  '(global-linum-mode t)
  '(markdown-hide-urls t)
