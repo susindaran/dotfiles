@@ -11,3 +11,7 @@ session.*
 transient/
 recentf
 *.log
+eshell/
+.lsp-session*
+.mc-lists.el
+tramp
