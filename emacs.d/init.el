@@ -140,12 +140,11 @@
     (mapc #'projectile-add-known-project
           (mapcar #'file-name-as-directory (magit-list-repos)))
     (projectile-save-known-projects))
-  (dolist (item '("~/org/")) (add-to-list 'projectile-known-projects item))
-  :requires helm)
+  (dolist (item '("~/org/")) (add-to-list 'projectile-known-projects item)))
 
 ;; Frame/Window management
 (use-package centaur-tabs
-  :init
+  :config
   (setq centaur-tabs-style "bar")
   (setq centaur-tabs-gray-out-icons 'buffer)
   (setq centaur-tabs-set-bar 'over)
@@ -153,10 +152,9 @@
   (setq centaur-tabs-modified-marker "*")
   (setq centaur-tabs-icons t)
   (setq centaur-tabs-cycle-scope 'tabs)
-  :config
-  (centaur-tabs-mode t)
   (centaur-tabs-headline-match)
   (centaur-tabs-group-by-projectile-project)
+  (centaur-tabs-mode)
   :bind
   ;; Switch tabs
   ("s-{" . centaur-tabs-backward)
@@ -168,9 +166,7 @@
   ("C-{" . centaur-tabs-move-current-tab-to-left)
   ("C-}" . centaur-tabs-move-current-tab-to-right)
   ;; Kill other tabs in current group
-  ("s-K" . centaur-tabs-kill-other-buffers-in-current-group)
-  :after (helm-projectile)
-  :requires helm-projectile)
+  ("s-K" . centaur-tabs-kill-other-buffers-in-current-group))
 
 ;; Let's not forget ag
 (use-package helm-ag
