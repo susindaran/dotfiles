@@ -1,5 +1,19 @@
 ;;; appearance --- Settings that change the appearance of Emacs
 ;;; Commentary:
+;;;   All appearance related settings are applied here.
+
+;; GUI theme
+;; (use-package dracula-theme)
+
+(use-package doom-themes
+  :ensure t
+  :config
+  (setq doom-themes-enable-bold t
+	doom-themes-enable-italic t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-neotree-config)
+  (doom-themes-org-config)
+  (load-theme 'doom-oceanic-next t))
 
 ;;; Code:
 ;; Set font-size
@@ -40,11 +54,13 @@
 (scroll-bar-mode -1)
 
 ;;; Required by doom-modeline
+;;; When installing for the first time, run
+;;; M-x all-the-icons-install-fonts
 (use-package all-the-icons)
 
 ;;; Fancy modeline
 (defun enable-doom-modeline-icons (_frame)
-  (setq doom-modeline-icon t))
+  (defvar doom-modeline-icon t))
 
 (use-package doom-modeline
   :ensure t
