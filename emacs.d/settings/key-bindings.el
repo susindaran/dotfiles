@@ -108,6 +108,27 @@ command does not push text to kill-ring"
   (while (search-forward "\n" nil t) (replace-match "" nil t)))
 
 ;; #############################################
+;; Modify font-size functions key-bindings
+;; #############################################
+
+(defun set-font-size (font size)
+  (set-face-attribute font nil :height size))
+
+(defun increase-font-size ()
+  (interactive)
+  (let ((new-size (+ (face-attribute 'default :height) 10)))
+    (set-font-size 'default new-size)))
+
+(defun decrease-font-size ()
+  (interactive)
+  (let ((new-size (- (face-attribute 'default :height) 10)))
+    (set-font-size 'default new-size)))
+
+(bind-keys*
+ ("s-+" . increase-font-size)
+ ("s-_" . decrease-font-size))
+
+;; #############################################
 ;; Other key-bindings
 ;; #############################################
 
