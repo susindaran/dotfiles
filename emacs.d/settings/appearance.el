@@ -27,9 +27,6 @@
 (set-face-attribute 'org-level-1 nil :inherit 'alect-title-1 :foreground "#DFAF8F" :height 150)
 (set-face-attribute 'org-todo nil :foreground "OrangeRed2" :weight 'bold)
 
-;; Start emacs window maximized
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
 ;; turn on line and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
