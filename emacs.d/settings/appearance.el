@@ -17,15 +17,12 @@
 
 ;;; Code:
 ;; Set font-size
-(set-face-attribute 'default nil :height 110)
-
-;; Highlight font settings
-(set-face-attribute 'highlight nil :background "gray53" :foreground "gray100")
+(set-face-attribute font nil :height 110)
 
 ;; Org-mode font settings
 (require 'org)
-(set-face-attribute 'org-level-1 nil :inherit 'alect-title-1 :foreground "#DFAF8F" :height 150)
-(set-face-attribute 'org-todo nil :foreground "OrangeRed2" :weight 'bold)
+;; (set-face-attribute 'org-level-1 nil :inherit 'alect-title-1 :foreground "#DFAF8F" :height 150)
+;; (set-face-attribute 'org-todo nil :foreground "OrangeRed2" :weight 'bold)
 
 ;; turn on line and column numbers
 (setq line-number-mode t)
@@ -63,6 +60,8 @@
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :config
+  (set-face-attribute 'mode-line nil :height 110)
+  (set-face-attribute 'mode-line-inactive nil :height 110)
   (add-hook 'after-make-frame-functions #'enable-doom-modeline-icons))
 
 (use-package rainbow-delimiters
