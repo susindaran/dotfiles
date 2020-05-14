@@ -54,6 +54,9 @@
 ;; Set column size to 80 characters in org-mode
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
+;; Tab width
+(setq-default tab-width 4)
+
 ;; Uniquify buffer names using a style that matches files paths
 (setq uniquify-buffer-name-style 'forward)
 
