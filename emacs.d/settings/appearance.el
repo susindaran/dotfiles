@@ -17,7 +17,7 @@
 
 ;;; Code:
 ;; Set font-size
-(set-face-attribute font nil :height 110)
+(set-face-attribute 'default nil :height 110)
 
 ;; Org-mode font settings
 (require 'org)
