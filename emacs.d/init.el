@@ -288,4 +288,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(magit-diff-hunk-heading ((t (:background "#006666" :foreground "#111111"))))
+ '(magit-diff-hunk-heading-highlight ((t (:background "#00BBBB" :foreground "#1B2B34" :weight bold))))
+ '(magit-diff-removed-highlight ((t (:background "#00000" :foreground "#EC5f67" :weight bold)))))
