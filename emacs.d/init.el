@@ -50,7 +50,7 @@
   (exec-path-from-shell-variables '("PATH"
                                     "MANPATH"
                                     "GOPATH"
-				    "GOROOT"))
+									"GOROOT"))
   :config
   (exec-path-from-shell-initialize))
 
@@ -168,12 +168,43 @@
   :after (helm)
   :requires helm)
 
+;; LSP
+(use-package lsp-mode
+  :commands (lsp lsp-deferred lsp-register-client)
+  :config
+  (setq lsp-log-io t)
+  (setq lsp-enable-snippet nil)
+  :hook
+  (go-mode . lsp-deferred))
+
+;; Set up before-save hooks to format buffer and add/delete imports.
+;; Make sure you don't have other gofmt/goimports hooks enabled.
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :bind (:map lsp-ui-mode-map
+              ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+              ([remap xref-find-references] . lsp-ui-peek-find-references)
+              ("C-c u" . lsp-ui-imenu)
+              ("M-i" . lsp-ui-doc-glance))
+  :custom
+  (lsp-ui-doc-header t)
+  (lsp-ui-doc-include-signature t)
+  (lsp-ui-doc-enable nil))
+
+;; (use-package company-lsp :commands company-lsp)
+;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+
 ;; golang
 (use-package go-mode
+  :init
+  (setenv "GOPATH" "/Users/susindaran/go")
   :config
-  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save))
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
 
 ;; Terraform
 (use-package terraform-mode)
@@ -201,15 +232,11 @@
 
 ;; Auto-completion framework
 (use-package company
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1)
   :hook
   (after-init . global-company-mode))
-
-;; Auto-completion for go
-(use-package company-go
-  :config
-  (add-hook 'go-mode-hook (lambda ()
-			    (set (make-local-variable 'company-backends) '(company-go))
-			    (company-mode))))
 
 (use-package flycheck
   :init (global-flycheck-mode)
@@ -281,10 +308,13 @@
  '(exec-path-from-shell-variables (quote ("PATH" "MANPATH" "GOPATH" "GOROOT")))
  '(global-flycheck-mode t)
  '(global-linum-mode t)
+ '(lsp-ui-doc-enable nil)
+ '(lsp-ui-doc-header t)
+ '(lsp-ui-doc-include-signature t)
  '(markdown-hide-urls t)
  '(package-selected-packages
    (quote
-    (helm-lsp rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline prettier-js tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs company-go go-mode org-bullets ws-butler lsp-mode company-lsp lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
+	(multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline prettier-js tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
