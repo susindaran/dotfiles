@@ -141,4 +141,6 @@ command does not push text to kill-ring"
 ;; Toggle comment in the region
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+
 (provide 'key-bindings)

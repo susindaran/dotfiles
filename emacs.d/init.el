@@ -238,6 +238,8 @@
   :config
   (smooth-scrolling-mode))
 
+(use-package multiple-cursors)
+
 ;; Defaults
 (use-package default-settings
   :load-path "settings/default-settings.el")
