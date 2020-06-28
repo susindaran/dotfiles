@@ -13,7 +13,7 @@
   (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)
   (doom-themes-org-config)
-  (load-theme 'doom-oceanic-next t))
+  (load-theme 'doom-one t))
 
 ;;; Code:
 ;; Set font-size
