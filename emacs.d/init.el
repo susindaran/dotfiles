@@ -235,8 +235,20 @@
   :config
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1)
+  (setq company-show-numbers t)
+  (setq company-tooltip-align-annotations t)
+  ;; invert the navigation direction if the the completion popup-isearch-match
+  ;; is displayed on top (happens near the bottom of windows)
+  (setq company-tooltip-flip-when-above t)
   :hook
   (after-init . global-company-mode))
+
+(use-package company-quickhelp
+  :ensure t
+  :init
+  (company-quickhelp-mode 1)
+  (use-package pos-tip
+    :ensure t))
 
 (use-package flycheck
   :init (global-flycheck-mode)
@@ -314,12 +326,10 @@
  '(markdown-hide-urls t)
  '(package-selected-packages
    (quote
-	(multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline prettier-js tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
+	(company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(magit-diff-hunk-heading ((t (:background "#006666" :foreground "#111111"))))
- '(magit-diff-hunk-heading-highlight ((t (:background "#00BBBB" :foreground "#1B2B34" :weight bold))))
- '(magit-diff-removed-highlight ((t (:background "#00000" :foreground "#EC5f67" :weight bold)))))
+ )
