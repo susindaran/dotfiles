@@ -1,4 +1,7 @@
-;; Start emacs window maximized
+;;; init -- main package
+;;; Commentary:
+;;; Code:
+;; Start Emacs window maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Set path to dependencies
