@@ -9,6 +9,9 @@
 ;; Copy marked region
 (global-set-key (kbd "s-c") 'kill-ring-save)
 
+;; Cut marked region
+(global-set-key (kbd "s-x") 'kill-region)
+
 ;; Paste killed/copied text
 (global-set-key (kbd "s-v") 'yank)
 
