@@ -33,6 +33,9 @@
 ;; Show trailing whitespace
 (setq-default show-trailing-whitespace t)
 
+;; Use spaces for tabs
+(setq-default indent-tabs-mode nil)
+
 ;; Sentences do not need double spaces to end. Period.
 (set-default 'sentence-end-double-space nil)
 
