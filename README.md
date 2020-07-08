@@ -1,6 +1,15 @@
+# ZSH config
+
+## Create symlink
+```sh
+ln -s dotfiles/zshutil ~/.zshutil
+ln -s dotfiles/zshrc ~/.zshrc
+```
+
+
 # Emacs Config
 
-## Create symlink to config
+## Create symlink
 ```sh
 ln -s dotfiles/emacs.d ~/.emacs.d
 ```
