@@ -60,6 +60,7 @@
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :config
+  (setq doom-modeline-vcs-max-length 50)
   (set-face-attribute 'mode-line nil :height 110)
   (set-face-attribute 'mode-line-inactive nil :height 110)
   (add-hook 'after-make-frame-functions #'enable-doom-modeline-icons))
