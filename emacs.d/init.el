@@ -177,6 +177,10 @@
   :config
   (setq lsp-log-io t)
   (setq lsp-enable-snippet nil)
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024))
+  :custom
+  (setq lsp-completion-provider :capf)
   :hook
   (go-mode . lsp-deferred))
 
