@@ -46,5 +46,7 @@ alias chardiff="git diff --no-index --word-diff=color --word-diff-regex=."
 # checkout master and pull
 alias mp="git checkout master && git pull origin master"
 alias ems="emacs --daemon"
+alias em="emacsclient -a '' -c"
+alias kill-emacs="emacsclient -e '(kill-emacs)'"
 
 [ -f ~/.zshutil/fzf.zsh ] && source ~/.zshutil/fzf.zsh
