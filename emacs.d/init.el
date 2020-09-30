@@ -179,8 +179,7 @@
   (setq lsp-enable-snippet nil)
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024))
-  :custom
-  (setq lsp-completion-provider :capf)
+  (defvar lsp-completion-provider :capf)
   :hook
   (go-mode . lsp-deferred))
 
@@ -240,7 +239,7 @@
 ;; Auto-completion framework
 (use-package company
   :config
-  (setq company-idle-delay 0)
+  (setq company-idle-delay 0.7)
   (setq company-minimum-prefix-length 1)
   (setq company-show-numbers t)
   (setq company-tooltip-align-annotations t)
