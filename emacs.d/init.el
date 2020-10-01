@@ -184,16 +184,7 @@
   (setq lsp-enable-snippet nil)
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024))
-  (defvar lsp-completion-provider :capf)
-  :hook
-  (go-mode . lsp-deferred))
-
-;; Set up before-save hooks to format buffer and add/delete imports.
-;; Make sure you don't have other gofmt/goimports hooks enabled.
-(defun lsp-go-install-save-hooks ()
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
-(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+  (defvar lsp-completion-provider :capf))
 
 (use-package lsp-ui
   :commands lsp-ui-mode
@@ -209,13 +200,6 @@
 
 ;; (use-package company-lsp :commands company-lsp)
 ;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
-
-;; golang
-(use-package go-mode
-  :init
-  (setenv "GOPATH" "/Users/susindaran/go")
-  :config
-  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
 
 ;; Terraform
 (use-package terraform-mode)
@@ -315,6 +299,10 @@
 ;; Ruby settings
 (use-package ruby-settings
   :load-path "settings/ruby-settings.el")
+
+;; Golang settings
+(use-package go-settings
+  :load-path "settings/go-settings.el")
 
 ;; For finding files using fzf
 (use-package helm-fzf
