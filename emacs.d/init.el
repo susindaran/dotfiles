@@ -1,6 +1,11 @@
 ;;; init -- main package
+;;;
 ;;; Commentary:
+;;;  Most of the main packages will be installed here. Other specific packages
+;;;  will be in separate files under settings/ directory.
+;;;
 ;;; Code:
+
 ;; Start Emacs window maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
