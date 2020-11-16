@@ -30,11 +30,11 @@
 ;; Find file
 (global-set-key (kbd "M-O") 'projectile-find-file)
 
-;; Search this file using ag
-(global-set-key (kbd "s-f") 'helm-do-ag-this-file)
+;; Search current directory using ripgrep
+(global-set-key (kbd "s-f") 'helm-rg)
 
-;; Search in project root using ag
-(global-set-key (kbd "s-F") 'helm-do-ag-project-root)
+;; Search in project root using ripgrep
+(global-set-key (kbd "s-F") 'helm-projectile-rg)
 
 ;; #############################################
 ;; Org key-bindings
