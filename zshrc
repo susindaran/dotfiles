@@ -56,6 +56,9 @@ alias ems="emacs --daemon"
 alias em="emacsclient -a '' -c"
 alias kill-emacs="emacsclient -e '(kill-emacs)'"
 
+# Set emacsclient to be default editor
+export EDITOR="em"
+
 [ -f ~/.zshutil/fzf.zsh ] && source ~/.zshutil/fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.zshutil/p10k.zsh
