@@ -16,3 +16,4 @@ eshell/
 .mc-lists.el
 tramp
 meghanada/
+.dap-breakpoints
