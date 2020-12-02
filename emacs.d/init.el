@@ -272,6 +272,13 @@
   :config
   (add-hook 'prog-mode-hook (lambda () (yafolding-mode))))
 
+;; Snippets
+(use-package yasnippet
+  :config (yas-global-mode))
+
+;; Collection of good snippets
+(use-package yasnippet-snippets)
+
 (use-package smooth-scrolling
   :config
   (smooth-scrolling-mode))
