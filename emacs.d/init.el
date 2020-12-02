@@ -83,17 +83,17 @@
   ("C-x M-b" . magit-blame))
 
 ;; NerdTREE like project tree GUI
-(use-package neotree
-  :bind
-  ("M-[" . neotree-toggle)
-  :config
-  ;; To change neotree to project root when switching projects with
-  ;; projectile
-  (defvar projectile-switch-project-action 'neotree-projectile-action)
-  (setq neo-show-hidden-files t)
-  ;; Every time when neotree window is opened, let it find the current
-  ;; file and jump to the node.
-  (setq neo-smart-open t))
+;; (use-package neotree
+;;   :bind
+;;   ("M-[" . neotree-toggle)
+;;   :config
+;;   ;; To change neotree to project root when switching projects with
+;;   ;; projectile
+;;   (defvar projectile-switch-project-action 'neotree-projectile-action)
+;;   (setq neo-show-hidden-files t)
+;;   ;; Every time when neotree window is opened, let it find the current
+;;   ;; file and jump to the node.
+;;   (setq neo-smart-open t))
 
 ;; Window and Frame switcher
 (use-package ace-window
@@ -139,6 +139,30 @@
           (mapcar #'file-name-as-directory (magit-list-repos)))
     (projectile-save-known-projects))
   (dolist (item '("~/org/")) (add-to-list 'projectile-known-projects item)))
+
+;; File explorer
+(use-package treemacs
+  :config
+  (treemacs-follow-mode t)
+  (treemacs-filewatch-mode t)
+  (treemacs-fringe-indicator-mode t)
+  :bind
+  (:map global-map
+        ("M-[" . treemacs)
+        ("M-s-[" . treemacs-select-window)))
+
+(use-package treemacs-projectile
+  :after treemacs helm-projectile
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-magit
+  :after treemacs magit
+  :ensure t)
 
 ;; Frame/Window management
 (use-package centaur-tabs
@@ -201,6 +225,8 @@
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)
   (lsp-ui-doc-enable nil))
+
+(use-package lsp-treemacs)
 
 ;; (use-package company-lsp :commands company-lsp)
 ;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
@@ -342,7 +368,7 @@
  '(lsp-ui-doc-include-signature t)
  '(markdown-hide-urls t)
  '(package-selected-packages
-   '(yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package)))
+   '(treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
