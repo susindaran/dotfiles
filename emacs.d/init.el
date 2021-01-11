@@ -11,7 +11,7 @@
 
 ;; Set path to dependencies
 (defvar settings-dir
-      (expand-file-name "settings" user-emacs-directory))
+  (expand-file-name "settings" user-emacs-directory))
 
 ;; Set up load path
 (add-to-list 'load-path settings-dir)
@@ -152,17 +152,14 @@
         ("M-s-[" . treemacs-select-window)))
 
 (use-package treemacs-projectile
-  :after treemacs helm-projectile
-  :ensure t)
+  :after treemacs helm-projectile)
 
 (use-package treemacs-icons-dired
   :after treemacs dired
-  :ensure t
   :config (treemacs-icons-dired-mode))
 
 (use-package treemacs-magit
-  :after treemacs magit
-  :ensure t)
+  :after treemacs magit)
 
 ;; Frame/Window management
 (use-package centaur-tabs
@@ -226,7 +223,10 @@
   (lsp-ui-doc-include-signature t)
   (lsp-ui-doc-enable nil))
 
-(use-package lsp-treemacs)
+(use-package lsp-treemacs
+  :after treemacs lsp
+  :config
+  (treemacs-fringe-indicator-mode t))
 
 ;; (use-package company-lsp :commands company-lsp)
 ;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
@@ -368,7 +368,7 @@
  '(lsp-ui-doc-include-signature t)
  '(markdown-hide-urls t)
  '(package-selected-packages
-   '(treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package)))
+   '(cfrs scala-mode treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
