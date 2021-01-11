@@ -58,7 +58,7 @@
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 ;; Tab width
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 
 ;; Uniquify buffer names using a style that matches files paths
 (setq uniquify-buffer-name-style 'forward)
