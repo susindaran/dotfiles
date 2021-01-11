@@ -13,7 +13,11 @@
             (flycheck-mode +1)
             (setq c-basic-offset 2)
             ;; use code format
-            (add-hook 'before-save-hook 'meghanada-code-beautify-before-save))))
+            (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
+  :bind
+  (:map java-mode-map
+        ("M-." . meghanada-jump-declaration)
+        ("M-," . meghanada-reference)))
 
 (provide 'java-settings)
 ;;; java-settings.el ends here
