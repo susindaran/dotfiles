@@ -314,6 +314,11 @@
 ;; Change horizontal split to vertical and vice-versa.
 (use-package transpose-frame)
 
+;; Scala
+(use-package scala-mode
+  :interpreter
+    ("scala" . scala-mode))
+
 ;; Defaults
 (use-package default-settings
   :load-path "settings/default-settings.el")
