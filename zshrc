@@ -57,7 +57,7 @@ alias em="emacsclient -a '' -c"
 alias kill-emacs="emacsclient -e '(kill-emacs)'"
 
 # Set emacsclient to be default editor
-export EDITOR="em"
+export EDITOR="emacsclient -a '' -c"
 
 [ -f ~/.zshutil/fzf.zsh ] && source ~/.zshutil/fzf.zsh
 
