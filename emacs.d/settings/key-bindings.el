@@ -39,7 +39,7 @@
 (global-set-key (kbd "M-O") 'projectile-find-file)
 
 ;; Search current directory using ripgrep
-(global-set-key (kbd "s-f") 'helm-rg)
+(global-set-key (kbd "s-f") 'helm-swoop)
 
 ;; Search in project root using ripgrep
 (global-set-key (kbd "s-F") 'helm-projectile-rg)
