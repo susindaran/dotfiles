@@ -1,3 +1,11 @@
+;;; key-bindings --- key-bindings definitions
+;;; Commentary:
+;;;   This package defines key-bindings for some of the functions from
+;;;   installed packages. This package also defines some functions and sets up
+;;;   key-bindings for them.
+
+;;; Code:
+
 ;; #############################################
 ;; Helm key-bindings
 ;; #############################################
@@ -57,8 +65,9 @@
 ;; #############################################
 
 (defun delete-word (arg)
-  "Delete characters forward until encoutering the end of a word. With argument,
-do this that many times. This command does not push text to kill-ring"
+  "Deletes ARG words.
+Each word is deleted by deleting characters forward until encoutering the end of
+a word. This command does not push text to 'kill-ring'"
   (interactive "p")
   (delete-region
    (point)
@@ -67,14 +76,15 @@ do this that many times. This command does not push text to kill-ring"
      (point))))
 
 (defun delete-word-backward (arg)
-  "Delete character backward until encountering the beginning of a word. With
-argument, do this that many times. This command does not push text to kill-ring"
+  "Deletes ARG words.
+Each word is deleted by deleting characters backward until encountering the
+beginning of a word. This command does not push text to 'kill-ring'"
   (interactive "p")
   (delete-word (- arg)))
 
 (defun delete-line ()
-  "Delete text from current position to end of line character. This command does
-not push text to kill-ring"
+  "Delete text from current position to end of line character.
+This command does not push text to 'kill-ring'"
   (interactive)
   (delete-region
    (point)
@@ -82,8 +92,8 @@ not push text to kill-ring"
   (delete-char 1))
 
 (defun delete-line-backward ()
-  "Delete text between the beginning of the line to the current poisition. This
-command does not push text to kill-ring"
+  "Delete text between the beginning of the line to the current poisition.
+This command does not push text to 'kill-ring'"
   (interactive)
   (let (point1 point2)
     (setq point1 (point))
@@ -100,7 +110,7 @@ command does not push text to kill-ring"
  ("<M-backspace>" . delete-word-backward))
 
 (defun minify-buffer()
-  "Minifies the buffer contents by removing whitespaces and newlines"
+  "Minifies the buffer contents by removing whitespaces and newlines."
   (interactive)
   (delete-whitespace-rectangle (point-min) (point-max))
   (mark-whole-buffer)
@@ -112,14 +122,17 @@ command does not push text to kill-ring"
 ;; #############################################
 
 (defun set-font-size (font size)
+  "Set the `FONT' size to `SIZE'."
   (set-face-attribute font nil :height size))
 
 (defun increase-font-size ()
+  "Increase the font size by 10 points."
   (interactive)
   (let ((new-size (+ (face-attribute 'default :height) 10)))
     (set-font-size 'default new-size)))
 
 (defun decrease-font-size ()
+  "Decrease the font size by 10 points."
   (interactive)
   (let ((new-size (- (face-attribute 'default :height) 10)))
     (set-font-size 'default new-size)))
@@ -144,3 +157,4 @@ command does not push text to kill-ring"
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 
 (provide 'key-bindings)
+;;; key-bindings.el ends here

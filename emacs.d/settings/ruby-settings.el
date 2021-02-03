@@ -1,7 +1,13 @@
+;;; ruby-settings --- settings for Ruby development
+;;; Commentary:
+
+;;; Code:
+
 (defun my-ruby-mode-hook ()
-    (set-fill-column 80)
-    (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local)
-    (defvar ruby-insert-encoding-magic-comment nil))
+  "Setup ruby mode."
+  (set-fill-column 80)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local)
+  (defvar ruby-insert-encoding-magic-comment nil))
 
 (use-package ruby-mode
   :config
@@ -34,3 +40,4 @@
 )
 
 (provide 'ruby-settings)
+;;; ruby-settings.el ends here

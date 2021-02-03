@@ -1,9 +1,18 @@
 ;;; js-settings --- settings for javascript/typescript development
 ;;; Commentary:
+;;; This package assumed that the following packages are installed:
+;;;   - flycheck
+;;;
+;;; So this package should be included after installing the above required
+;;; packages.
+
 ;;; Code:
+
+(require 'flycheck)
 
 ;; TIDE - completion (company), eldoc, definitions, references
 (defun setup-tide-mode ()
+  "Setup tide-mode and other required things for syntax checking, completion, etc."
   (interactive)
   (tide-setup)
   (flycheck-mode +1)
@@ -22,13 +31,11 @@
         web-mode-code-indent-offset 2
         web-mode-block-padding 2
         web-mode-comment-style 2
-
         web-mode-enable-css-colorization t
         web-mode-enable-auto-pairing t
-        web-mode-enable-comment-keywords t
         web-mode-enable-current-element-highlight t
-	web-mode-enable-auto-indentation nil
-        )
+        web-mode-enable-auto-indentation nil)
+  (defvar web-mode-enable-comment-keywords t)
   (add-hook 'web-mode-hook
             (lambda ()
               (when (string-equal "tsx" (file-name-extension buffer-file-name))

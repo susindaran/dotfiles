@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;;   All appearance related settings are applied here.
 
+;;; Code:
+
 ;; GUI theme
 ;; (use-package dracula-theme)
 
@@ -15,7 +17,6 @@
   (doom-themes-org-config)
   (load-theme 'doom-one t))
 
-;;; Code:
 ;; Set font-size
 (set-face-attribute 'default nil :height 110)
 

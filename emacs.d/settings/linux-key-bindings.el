@@ -1,4 +1,9 @@
-;; Linux specific key-bindings
+;;; linux-key-bindings --- Linux specific key-bindings definitions
+;;; Commentary:
+;;;   This package defines key-bindings that are to be specifically set for the
+;;;   Linux platform.
+
+;;; Code:
 
 ;; Switch windows
 (global-set-key (kbd "s-'") 'next-multiframe-window)
@@ -20,3 +25,6 @@
 
 ;; Kill current buffer
 (global-set-key (kbd "s-k") 'kill-current-buffer)
+
+(provide 'linux-key-bindings)
+;;; linux-key-bindings.el ends here

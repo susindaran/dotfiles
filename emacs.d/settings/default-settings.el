@@ -1,3 +1,9 @@
+;;; default-settings --- Some good default settings
+;;; Commentary:
+;;;   All default Emacs settings changes are applied here.
+
+;;; Code:
+
 ;; Using bash shell because zsh for some reason slows down
 ;; helm-projectile-find-file
 (setq shell-file-name "/bin/bash")
@@ -40,7 +46,7 @@
 (set-default 'sentence-end-double-space nil)
 
 ;; Show matching parentheses without any delay
-(setq show-paren-delay 0)
+(defvar show-paren-delay 0)
 
 ;; Select help window when opened
 (setq help-window-select t)
@@ -63,14 +69,16 @@
 ;; Uniquify buffer names using a style that matches files paths
 (setq uniquify-buffer-name-style 'forward)
 
-;; Quickly close all buffers to reset emacs to a clean state
 (defun close-all-buffers ()
+  "Quickly close all the open buffers."
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
 ;; #############################################
 ;; Org-mode settings
 ;; #############################################
+
+(require 'org)
 
 ;; ! - log timestamp
 ;; @ - log timestamp with note
@@ -86,3 +94,4 @@
 (electric-pair-mode)
 
 (provide 'default-settings)
+;;; default-settings.el ends here

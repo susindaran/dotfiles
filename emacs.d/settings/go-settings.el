@@ -1,16 +1,21 @@
 ;;; go-settings --- settings for Golang development
 ;;;
 ;;; Commentary:
-;;;  settings for Golang development
+;;; This package assumed that the following packages are installed:
+;;;   - lsp
 ;;;
+;;; So this package should be included after installing the above required
+;;; packages.
+
 ;;; Code:
+
+(require 'lsp)
 
 ;; Use LSP for go-mode
 (add-hook 'go-mode-hook #'lsp-deferred)
 
-;; Set up before-save hooks to format buffer and add/delete imports.
-;; Make sure you don't have other gofmt/goimports hooks enabled.
 (defun lsp-go-install-save-hooks ()
+  "Set up before-save hooks to format buffer and add/delete imports."
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)

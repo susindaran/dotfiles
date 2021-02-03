@@ -1,3 +1,9 @@
+;;; remote-emacs --- Some good default settings to work with Emacs in a remote terminal.
+;;; Commentary:
+;;;   Most of the settings here are from `default-settings.el'
+
+;;; Code:
+
 ;; Bare minimum settings to work with emacs in remote instance
 ;; Using bash shell because zsh for some reason slows down
 ;; helm-projectile-find-file
@@ -38,7 +44,7 @@
 (set-default 'sentence-end-double-space nil)
 
 ;; Show matching parentheses without any delay
-(setq show-paren-delay 0)
+(defvar show-paren-delay 0)
 
 ;; Select help window when opened
 (setq help-window-select t)
@@ -61,8 +67,8 @@
 ;; Uniquify buffer names using a style that matches files paths
 (setq uniquify-buffer-name-style 'forward)
 
-;; Quickly close all buffers to reset emacs to a clean state
 (defun close-all-buffers ()
+  "Quickly close all the open buffers."
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
@@ -79,3 +85,6 @@
 ;; no start up message
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
+
+(provide 'remote-emacs)
+;;; remote-emacs.el ends here
