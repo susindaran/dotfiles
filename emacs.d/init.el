@@ -140,8 +140,12 @@
     (projectile-save-known-projects))
   (dolist (item '("~/org/")) (add-to-list 'projectile-known-projects item)))
 
+;; Required by the `treemacs' package, but for some reason is not being auto-installed.
+(use-package cfrs)
+
 ;; File explorer
 (use-package treemacs
+  :after cfrs
   :config
   (treemacs-follow-mode t)
   (treemacs-filewatch-mode t)
@@ -365,7 +369,7 @@
  ;; If there is more than one, they won't work right.
  '(centaur-tabs-mode t nil (centaur-tabs))
  '(exec-path-from-shell-check-startup-files nil t)
- '(exec-path-from-shell-variables '("PATH" "MANPATH" "GOPATH" "GOROOT"))
+ '(exec-path-from-shell-variables (quote ("PATH" "MANPATH" "GOPATH" "GOROOT")))
  '(global-flycheck-mode t)
  '(global-linum-mode t)
  '(lsp-ui-doc-enable nil)
@@ -373,7 +377,8 @@
  '(lsp-ui-doc-include-signature t)
  '(markdown-hide-urls t)
  '(package-selected-packages
-   '(cfrs scala-mode treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package)))
+   (quote
+    (treemacs-all-the-icons cfrs scala-mode treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
