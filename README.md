@@ -67,6 +67,10 @@ path to the directory [here](https://github.com/susindaran/dotfiles/blob/master/
 
 Close and re-open emacs (or `M-x eval-buffer`).
 
+### Treemacs
+Treemacs is used as the file-explorer. Use `M-x treemacs-projectile` to add
+projects to the workspace. This is a one time setup.
+
 # Vim Config
 ```sh
 ln -s dotfiles/vimrc ~/.vimrc
