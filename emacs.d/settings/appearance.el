@@ -21,8 +21,6 @@
 
 ;; Org-mode font settings
 (require 'org)
-;; (set-face-attribute 'org-level-1 nil :inherit 'alect-title-1 :foreground "#DFAF8F" :height 150)
-;; (set-face-attribute 'org-todo nil :foreground "OrangeRed2" :weight 'bold)
 
 ;; turn on line and column numbers
 (setq line-number-mode t)

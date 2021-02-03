@@ -82,19 +82,6 @@
   ("C-x g" . magit-status)
   ("C-x M-b" . magit-blame))
 
-;; NerdTREE like project tree GUI
-;; (use-package neotree
-;;   :bind
-;;   ("M-[" . neotree-toggle)
-;;   :config
-;;   ;; To change neotree to project root when switching projects with
-;;   ;; projectile
-;;   (defvar projectile-switch-project-action 'neotree-projectile-action)
-;;   (setq neo-show-hidden-files t)
-;;   ;; Every time when neotree window is opened, let it find the current
-;;   ;; file and jump to the node.
-;;   (setq neo-smart-open t))
-
 ;; Window and Frame switcher
 (use-package ace-window
   :bind
@@ -232,9 +219,6 @@
   :config
   (treemacs-fringe-indicator-mode t))
 
-;; (use-package company-lsp :commands company-lsp)
-;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
-
 ;; Terraform
 (use-package terraform-mode)
 
@@ -283,19 +267,6 @@
   :init (global-flycheck-mode)
   :config
   (setq flycheck-check-syntax-automatically '(save mode-enabled)))
-
-;; Jump to definition (dumb but effective)
-;; (use-package dumb-jump
-;;   :config
-;;   (progn
-;;     (define-prefix-command 'dj-prefix)
-;;     (define-key dj-prefix (kbd "j") 'dumb-jump-go)
-;;     (define-key dj-prefix (kbd "o") 'dumb-jump-go-other-window)
-;;     (define-key dj-prefix (kbd "q") 'dumb-jump-quick-look)
-;;     (define-key dj-prefix (kbd "b") 'dumb-jump-back))
-;;   (global-set-key (kbd "M-j") 'dj-prefix)
-;;   (setq dumb-jump-selector 'helm)
-;;   (setq dumb-jump-force-searcher 'rg))
 
 ;; Folding
 (use-package yafolding
