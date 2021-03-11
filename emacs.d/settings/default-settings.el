@@ -33,6 +33,9 @@
 ;; Lines should be 80 characters wide
 (setq fill-column 80)
 
+;; Set line number
+(global-display-line-numbers-mode t)
+
 ;; Show me empty lines after buffer end
 (set-default 'indicate-empty-lines t)
 
