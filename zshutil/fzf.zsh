@@ -20,3 +20,11 @@ preview-commits() {
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' |
   grep -o "[a-f0-9]\{7,\}"
 }
+
+# Preview files
+# requires https://github.com/sharkdp/bat for syntax highlighting
+fzf-preview() {
+    fzf --height 50% --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort,alt-n:preview-down,alt-p:preview-up' \
+        --header 'Press CTRL-S to toggle sort' \
+        --preview 'bat --color=always --line-range :500 {}'
+}

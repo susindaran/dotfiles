@@ -55,6 +55,7 @@ alias mp="git checkout master && git pull origin master"
 alias ems="emacs --daemon"
 alias em="emacsclient -a '' -c"
 alias kill-emacs="emacsclient -e '(kill-emacs)'"
+alias c="clear"
 
 # Set emacsclient to be default editor
 export EDITOR="emacsclient -a '' -c"
