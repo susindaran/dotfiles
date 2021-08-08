@@ -13,7 +13,7 @@ is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
 }
 
-# Preview commits from git log
+# Preview commit diffs from git log
 preview-commits() {
   is_in_git_repo || return
   git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
@@ -24,13 +24,26 @@ preview-commits() {
 }
 
 # Preview files
-# requires https://github.com/sharkdp/bat for syntax highlighting
+# (requires https://github.com/sharkdp/bat for syntax highlighting)
+#
+# Pipe the output of ls or fd to this function to preview the files in the search result
+# Example:
+#   fd -t file "search term" /path/ | fzf-preview
 fzf-preview() {
     fzf --no-sort --bind 'ctrl-s:toggle-sort,alt-n:preview-down,alt-p:preview-up' \
         --header 'Press CTRL-S to toggle sort' \
         --preview 'bat --color=always {}'
 }
 
+# Preview the search results with some context lines above and below
+# (requires https://github.com/sharkdp/bat for syntax highlighting)
+#
+# Pipe the output of `grep` or `rg` to this function to preview the file with a matching
+# result. The line matching the search will be highlighted and scrolled-to in the preview
+# window.
+#
+# Example:
+#   rg --no-heading --line-number "search term" /path/ | fzf-search-preview
 fzf-search-preview() {
     fzf --no-sort --delimiter=: \
         --bind 'ctrl-s:toggle-sort,alt-n:preview-down,alt-p:preview-up' \
