@@ -92,7 +92,8 @@
 ;; For jumping around text
 (use-package ace-jump-mode
   :bind
-  ("M-;" . ace-jump-mode))
+  ("M-;" . ace-jump-mode)
+  ("M-'" . ace-jump-line-mode))
 
 ;; Helm to the resuce
 (use-package helm
