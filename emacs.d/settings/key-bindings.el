@@ -101,13 +101,23 @@ This command does not push text to 'kill-ring'"
     (setq point2 (point))
     (delete-region point1 point2)))
 
+(defun duplicate-line ()
+  "Duplicate current line"
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (newline)
+  (yank))
+
 ;; Using bind-keys* function to set these key-bindings in all modes
 ;; For instance, C-k is set to org-kill-line in org-mode
 (bind-keys*
  ("C-k" . delete-line)
  ("<s-backspace>" . delete-line-backward)
  ("M-d" . delete-word)
- ("<M-backspace>" . delete-word-backward))
+ ("<M-backspace>" . delete-word-backward)
+ ("C-," . duplicate-line))
 
 (defun minify-buffer()
   "Minifies the buffer contents by removing whitespaces and newlines."
