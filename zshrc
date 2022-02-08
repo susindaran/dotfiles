@@ -5,11 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-autoload -Uz compinit; compinit
-autoload -Uz bashcompinit; bashcompinit
-source ~/.bash_profile
-source ~/.bashrc
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -32,12 +27,23 @@ plugins=(
   battery
   bundler
   dotenv
-  osx
+  macos
   rbenv
   ruby
+  # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
+  zsh-autosuggestions
 )
 
+ZSH_DISABLE_COMPFIX="true"
+
 source $ZSH/oh-my-zsh.sh
+
+autoload -Uz compinit; compinit
+autoload -Uz bashcompinit; bashcompinit
+source ~/.bashrc
+source ~/.bash_profile
+eval "$(nodenv init -)"
+compdef _git stripe-git=git # this line specifically will fix git autocompletion
 
 function tmux-new() {
     tmux new -s $1
