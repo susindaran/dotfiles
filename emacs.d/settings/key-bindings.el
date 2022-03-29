@@ -119,13 +119,21 @@ This command does not push text to 'kill-ring'"
  ("<M-backspace>" . delete-word-backward)
  ("C-," . duplicate-line))
 
-(defun minify-buffer()
+(defun minify-buffer ()
   "Minifies the buffer contents by removing whitespaces and newlines."
   (interactive)
   (delete-whitespace-rectangle (point-min) (point-max))
   (mark-whole-buffer)
   (goto-char (point-min))
   (while (search-forward "\n" nil t) (replace-match "" nil t)))
+
+(defun git-branch ()
+  "Show the current branch in the echo-area"
+  (interactive)
+  (let ((branch (magit-get-current-branch)))
+    (if branch
+        (progn (message "%s" branch))
+      (user-error "There is no current branch"))))
 
 ;; #############################################
 ;; Modify font-size functions key-bindings
