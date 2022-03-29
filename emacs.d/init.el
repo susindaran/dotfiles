@@ -80,7 +80,18 @@
 	'(("~/projects/" . 2)))
   :bind
   ("C-x g" . magit-status)
-  ("C-x M-b" . magit-blame))
+  ("C-x M-b" . magit-blame)
+  :custom
+  (magit-git-executable "/usr/local/bin/git")
+  :config
+  (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-untracked-files)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-pushremote)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-merge-log))
 
 ;; Window and Frame switcher
 (use-package ace-window
@@ -347,6 +358,7 @@
  '(lsp-ui-doc-header t)
  '(lsp-ui-doc-include-signature t)
  '(markdown-hide-urls t)
+ '(org-startup-truncated nil)
  '(package-selected-packages
    '(helm-swoop cfrs scala-mode treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))
  '(safe-local-variable-values
