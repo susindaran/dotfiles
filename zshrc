@@ -38,12 +38,25 @@ ZSH_DISABLE_COMPFIX="true"
 
 source $ZSH/oh-my-zsh.sh
 
-autoload -Uz compinit; compinit
-autoload -Uz bashcompinit; bashcompinit
-source ~/.bashrc
-source ~/.bash_profile
-eval "$(nodenv init -)"
-compdef _git stripe-git=git # this line specifically will fix git autocompletion
+case "$(uname -s)" in
+
+   Darwin)
+     autoload -Uz compinit; compinit
+     autoload -Uz bashcompinit; bashcompinit
+     source ~/.bashrc
+     source ~/.bash_profile
+     eval "$(nodenv init -)"
+     compdef _git stripe-git=git # this line specifically will fix git autocompletion
+     ;;
+
+   Linux)
+     # Set linux specific settings
+     ;;
+
+   *)
+     echo 'Other OS'
+     ;;
+esac
 
 function tmux-new() {
     tmux new -s $1
@@ -71,3 +84,6 @@ export EDITOR="emacsclient -a '' -c"
 
 # To customize prompt, run `p10k configure` or edit ~/.zshutil/p10k.zsh
 [[ ! -f ~/.zshutil/p10k.zsh ]] || source ~/.zshutil/p10k.zsh
+
+# For ubuntu, use this instead
+# [[ ! -f ~/.zshutil/p10k-ubuntu.zsh ]] || source ~/.zshutil/p10k-ubuntu.zsh
