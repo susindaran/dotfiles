@@ -110,13 +110,19 @@ This command does not push text to 'kill-ring'"
   (newline)
   (yank))
 
+(global-set-key (kbd "C-k") 'delete-line)
+(global-set-key (kbd "<s-backspace>") 'delete-line-backward)
+(global-set-key (kbd "M-d") 'delete-word)
+(global-set-key (kbd "<M-backspace>") 'delete-word-backward)
+(global-set-key (kbd "C-,") 'duplicate-line)
+
 ;; Using bind-keys* function to set these key-bindings in all modes
 ;; For instance, C-k is set to org-kill-line in org-mode
 (bind-keys*
  ("C-k" . delete-line)
- ("<s-backspace>" . delete-line-backward)
+ ("s-<backspace>" . delete-line-backward)
  ("M-d" . delete-word)
- ("<M-backspace>" . delete-word-backward)
+ ("M-<backspace>" . delete-word-backward)
  ("C-," . duplicate-line))
 
 (defun minify-buffer ()

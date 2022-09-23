@@ -77,6 +77,10 @@
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
+;; Workaround a tramp-MacOS bug that dramatically slows completion
+(put 'temporary-file-directory 'standard-value
+     (list temporary-file-directory))
+
 ;; #############################################
 ;; Org-mode settings
 ;; #############################################
