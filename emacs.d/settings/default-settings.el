@@ -69,6 +69,12 @@
 ;; Tab width
 (setq-default tab-width 2)
 
+;; Set tab width for json files
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 4)))
+
 ;; Uniquify buffer names using a style that matches files paths
 (setq uniquify-buffer-name-style 'forward)
 
