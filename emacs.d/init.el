@@ -19,6 +19,8 @@
 ;; Set up exec-path
 (add-to-list 'exec-path "/usr/local/bin/")
 
+(setq gc-cons-threshold #x40000000)
+
 
 ;; #############################################
 ;; PACKAGES
@@ -61,6 +63,8 @@
 									"GOROOT"))
   :config
   (exec-path-from-shell-initialize))
+
+(add-to-list 'image-types 'svg)
 
 ;; Deletes trailing whitespace from edited lines
 (use-package ws-butler
@@ -109,7 +113,6 @@
 ;; Helm to the resuce
 (use-package helm
   :config
-  (require 'helm-config)
   (setq
    helm-split-window-inside-p      t ; open helm buffer inside current window, not occupy whole other window
    helm-scroll-amount              8 ; scroll 8 lines other window using M-<next>/M-<prior>
@@ -252,6 +255,8 @@
 
 (use-package puppet-mode)
 
+(require 'org-indent)
+
 ;; Pretty org-mode
 (use-package org-bullets
   :config
@@ -360,7 +365,7 @@
  '(markdown-hide-urls t)
  '(org-startup-truncated nil)
  '(package-selected-packages
-   '(helm-swoop cfrs scala-mode treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))
+   '(deadgrep rg protobuf-mode helm-swoop cfrs scala-mode treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))
  '(safe-local-variable-values
    '((fci-rule-column . 140)
      (c-comment-only-line-offset 0 . 0)
@@ -468,7 +473,8 @@
            (c-set-offset 'inher-intro '++)
            (c-set-offset 'inher-cont '++)
            (c-set-offset 'brace-list-intro '+)
-           (c-set-offset 'func-decl-cont '++)))))
+           (c-set-offset 'func-decl-cont '++))))
+ '(warning-suppress-log-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
