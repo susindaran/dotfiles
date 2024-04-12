@@ -66,6 +66,27 @@ function tmux-attach() {
     tmux attach-session -t $1
 }
 
+delete_directory() {
+  local DIR=$1
+  if [ -d "$DIR" ]; then
+    echo "Deleting directory $DIR"
+    du -sh "$DIR"
+    rm -rf "$DIR" && echo "Deleted $DIR."
+  else
+    echo "Directory $DIR does not exist."
+  fi
+}
+
+git_garbage_collect() {
+  local DIR=$1
+  if [ -d "$DIR" ]; then
+    echo "Running 'git gc --aggressive --prune=now' in $DIR"
+    git -C "$DIR" gc --aggressive --prune=now
+  else
+    echo "$DIR is not a Git repository."
+  fi
+}
+
 alias weather="curl http://v2.wttr.in -s"
 alias gcm="git commit -m"
 alias chardiff="git diff --no-index --word-diff=color --word-diff-regex=."

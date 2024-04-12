@@ -29,10 +29,15 @@ preview-commits() {
 # Pipe the output of ls or fd to this function to preview the files in the search result
 # Example:
 #   fd -t file "search term" /path/ | fzf-preview
+#   Or use the helper: fd-with-preview "search term" /path/
 fzf-preview() {
     fzf --no-sort --bind 'ctrl-s:toggle-sort,alt-n:preview-down,alt-p:preview-up' \
         --header 'Press CTRL-S to toggle sort' \
         --preview 'bat --color=always {}'
+}
+
+fd-with-preview() {
+    fd -t file $1 $2 | fzf-preview
 }
 
 # Preview the search results with some context lines above and below
@@ -44,8 +49,13 @@ fzf-preview() {
 #
 # Example:
 #   rg --no-heading --line-number "search term" /path/ | fzf-search-preview
+#   Or use the helper: rg-with-preview "search term" /path/
 fzf-search-preview() {
     fzf --no-sort --delimiter=: \
         --bind 'ctrl-s:toggle-sort,alt-n:preview-down,alt-p:preview-up' \
         --preview 'file={1}; line={2}; lines=$FZF_PREVIEW_LINES; center=$(( (lines - 3) / 2 )); if [ $line -lt $center ]; then center=$line; fi; start=$(( line - center )); end=$(( lines + start )); bat --color always --highlight-line $line --line-range $start:$end --paging never "$file"'
+}
+
+rg-with-preview() {
+    rg --no-heading --line-number $1 $2 | fzf-search-preview
 }
