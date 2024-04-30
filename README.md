@@ -35,20 +35,9 @@ Install ag by following the instructions from [here](https://github.com/ggreer/t
 Install fzf by following the instructions from [here](https://github.com/junegunn/fzf/blob/master/README.md#installation) for your platform.
 
 ## Setup ripgrep
-If you want to use ripgrep as the base command for the helm-ag plugin, symlink
-the `rg-wrapper` script to /usr/local/bin/rg-wrapper.
+`s-F` is bound to `helm-projectile-rg` (fuzzy search in project root) which required ripgrep.
 
-```sh
-brew install ripgrep
-ln -s dotfiles/rg-wrapper /usr/local/bin/.
-```
-
-Add the following under `:config` of `use-package helm-ag`
-
-
-```
-(setq helm-ag-base-command "rg-wrapper --vimgrep --no-heading --smart-case")
-```
+Install ripgrep by following the instructions from [here](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation) for your platform.
 
 ## Configure projects
 This config use projectile for project management. To configure projectile to
@@ -70,8 +59,3 @@ Close and re-open emacs (or `M-x eval-buffer`).
 ### Treemacs
 Treemacs is used as the file-explorer. Use `M-x treemacs-projectile` to add
 projects to the workspace. This is a one time setup.
-
-# Vim Config
-```sh
-ln -s dotfiles/vimrc ~/.vimrc
-```

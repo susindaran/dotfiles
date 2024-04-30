@@ -15,7 +15,7 @@
   (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)
   (doom-themes-org-config)
-  (load-theme 'doom-one t))
+  (load-theme 'doom-molokai t))
 
 ;; Set font-size
 (set-face-attribute 'default nil :height 110)
@@ -48,8 +48,8 @@
 
 ;;; Required by doom-modeline
 ;;; When installing for the first time, run
-;;; M-x all-the-icons-install-fonts
-(use-package all-the-icons)
+;;; M-x nerd-icons-install-fonts
+(use-package nerd-icons)
 
 ;;; Fancy modeline
 (defun enable-doom-modeline-icons (_frame)
@@ -59,9 +59,12 @@
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :config
-  (setq doom-modeline-vcs-max-length 50)
-  (set-face-attribute 'mode-line nil :height 110)
-  (set-face-attribute 'mode-line-inactive nil :height 110)
+  (setq doom-modeline-vcs-max-length 100)
+  (setq doom-modeline-buffer-file-name-style 'truncate-nil)
+  (setq doom-modeline-icon t)
+  (setq doom-modeline-major-mode-color-icon t)
+  (set-face-attribute 'mode-line nil :height 150)
+  (set-face-attribute 'mode-line-inactive nil :height 150)
   (add-hook 'after-make-frame-functions #'enable-doom-modeline-icons))
 
 (use-package rainbow-delimiters

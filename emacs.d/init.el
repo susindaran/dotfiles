@@ -195,20 +195,6 @@
   ;; Kill other tabs in current group
   ("s-K" . centaur-tabs-kill-other-buffers-in-current-group))
 
-;; Let's not forget ag
-(use-package helm-ag
-  :config
-  ;; Enable fuzzy matching
-  (setq helm-ag-fuzzy-match t)
-  ;; Use .agignore file at project root
-  (setq helm-ag-use-agignore t)
-  :after (helm)
-  :requires helm)
-
-(use-package helm-rg
-  :after (helm)
-  :requires (helm))
-
 ;; LSP
 (use-package lsp-mode
   :commands (lsp lsp-deferred lsp-register-client)
