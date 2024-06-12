@@ -216,12 +216,9 @@
   :custom
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)
-  (lsp-ui-doc-enable nil))
-
-(use-package lsp-treemacs
-  :after treemacs lsp
-  :config
-  (treemacs-fringe-indicator-mode t))
+  (lsp-ui-doc-enable nil)
+  (lsp-ui-imenu-window-width 70)
+  (lsp-ui-imenu-window-fix-width t))
 
 ;; Terraform
 (use-package terraform-mode)
