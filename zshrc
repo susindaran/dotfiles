@@ -103,8 +103,12 @@ export EDITOR="emacsclient -a '' -c"
 
 [ -f ~/.zshutil/fzf.zsh ] && source ~/.zshutil/fzf.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.zshutil/p10k.zsh
-[[ ! -f ~/.zshutil/p10k.zsh ]] || source ~/.zshutil/p10k.zsh
-
-# For ubuntu, use this instead
-# [[ ! -f ~/.zshutil/p10k-ubuntu.zsh ]] || source ~/.zshutil/p10k-ubuntu.zsh
+os_type=$(uname)
+if [[ "$os_type" == "Darwin" ]]; then
+  # To customize prompt, run `p10k configure` or edit ~/.zshutil/p10k.zsh
+  [[ ! -f ~/.zshutil/p10k.zsh ]] || source ~/.zshutil/p10k.zsh
+elif [[ "$os_type" == "Linux" ]]; then
+  [[ ! -f ~/.zshutil/p10k-ubuntu.zsh ]] || source ~/.zshutil/p10k-ubuntu.zsh
+else
+  echo "There is no p10k config file for operating system: $os_type"
+fi
