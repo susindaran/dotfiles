@@ -25,7 +25,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
   git
   battery
-  bundler
   dotenv
   macos
   rbenv
@@ -51,6 +50,7 @@ case "$(uname -s)" in
 
    Linux)
      # Set linux specific settings
+     eval "$(rbenv init -)"
      ;;
 
    *)

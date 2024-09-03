@@ -6,6 +6,8 @@
 ;;;
 ;;; Code:
 
+(setq warning-minimum-level :error)
+
 ;; Start Emacs window maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
