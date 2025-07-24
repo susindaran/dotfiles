@@ -125,6 +125,7 @@
   (setq helm-M-x-fuzzy-match                  t)
   (setq helm-buffers-fuzzy-matching           t)
   (setq helm-recentf-fuzzy-match              t)
+  (setq helm-move-to-line-cycle-in-source     nil)
   (helm-autoresize-mode 1)
   (helm-mode 1))
 
