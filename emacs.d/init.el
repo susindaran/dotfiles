@@ -129,8 +129,6 @@
   (helm-autoresize-mode 1)
   (helm-mode 1))
 
-(use-package helm-swoop)
-
 ;; Make projectile even better
 (use-package helm-projectile
   :config
@@ -348,109 +346,73 @@
  '(lsp-ui-doc-include-signature t)
  '(markdown-hide-urls t)
  '(org-startup-truncated nil)
- '(package-selected-packages
-   '(deadgrep rg protobuf-mode helm-swoop cfrs scala-mode treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet-snippets meghanada yasnippet helm-rg transpose-frame esup company-quickhelp multiple-cursors rhtml-mode rainbow-delimiters doom-themes all-the-icons doom-modeline tide use-package-ensure-system-package rjsx-mode js2-mode puppet-mode helm-ag helm-projectile helm lsp centaur-tabs go-mode org-bullets ws-butler lsp-mode lsp-ui dumb-jump company-flow flycheck-flow flycheck company yaml-mode markdown-mode json-mode magit terraform-mode helm-config nord-theme elscreen escreen ace-jump-mode ace-window appearance auto-package-update neotree dracula-theme use-package))
+ '(package-selected-packages nil)
  '(safe-local-variable-values
-   '((fci-rule-column . 140)
-     (c-comment-only-line-offset 0 . 0)
+   '((fci-rule-column . 140) (c-comment-only-line-offset 0 . 0)
      (eval progn
            (defun my/point-in-defun-declaration-p nil
              (let
-                 ((bod
+                 ((bod (save-excursion (c-beginning-of-defun) (point))))
+               (<= bod (point)
                    (save-excursion
-                     (c-beginning-of-defun)
-                     (point))))
-               (<= bod
-                   (point)
-                   (save-excursion
-                     (goto-char bod)
-                     (re-search-forward "{")
-                     (point)))))
-           (defun my/is-string-concatenation-p nil "Returns true if the previous line is a string concatenation"
-                  (save-excursion
-                    (let
-                        ((start
-                          (point)))
-                      (forward-line -1)
-                      (if
-                          (re-search-forward " \\+$" start t)
-                          t nil))))
-           (defun my/inside-java-lambda-p nil "Returns true if point is the first statement inside of a lambda"
-                  (save-excursion
-                    (c-beginning-of-statement-1)
-                    (let
-                        ((start
-                          (point)))
-                      (forward-line -1)
-                      (if
-                          (search-forward " -> {" start t)
-                          t nil))))
-           (defun my/trailing-paren-p nil "Returns true if point is a training paren and semicolon"
-                  (save-excursion
-                    (end-of-line)
-                    (let
-                        ((endpoint
-                          (point)))
-                      (beginning-of-line)
-                      (if
-                          (re-search-forward "[ ]*);$" endpoint t)
-                          t nil))))
-           (defun my/prev-line-call-with-no-args-p nil "Return true if the previous line is a function call with no arguments"
-                  (save-excursion
-                    (let
-                        ((start
-                          (point)))
-                      (forward-line -1)
-                      (if
-                          (re-search-forward ".($" start t)
-                          t nil))))
-           (defun my/arglist-cont-nonempty-indentation
-               (arg)
+                     (goto-char bod) (re-search-forward "{") (point)))))
+           (defun my/is-string-concatenation-p nil
+             "Returns true if the previous line is a string concatenation"
+             (save-excursion
+               (let ((start (point)))
+                 (forward-line -1)
+                 (if (re-search-forward " \\+$" start t) t nil))))
+           (defun my/inside-java-lambda-p nil
+             "Returns true if point is the first statement inside of a lambda"
+             (save-excursion
+               (c-beginning-of-statement-1)
+               (let ((start (point)))
+                 (forward-line -1)
+                 (if (search-forward " -> {" start t) t nil))))
+           (defun my/trailing-paren-p nil
+             "Returns true if point is a training paren and semicolon"
+             (save-excursion
+               (end-of-line)
+               (let ((endpoint (point)))
+                 (beginning-of-line)
+                 (if (re-search-forward "[ ]*);$" endpoint t) t nil))))
+           (defun my/prev-line-call-with-no-args-p nil
+             "Return true if the previous line is a function call with no arguments"
+             (save-excursion
+               (let ((start (point)))
+                 (forward-line -1)
+                 (if (re-search-forward ".($" start t) t nil))))
+           (defun my/arglist-cont-nonempty-indentation (arg)
+             (if (my/inside-java-lambda-p) '+
+               (if (my/is-string-concatenation-p) 16
+                 (unless (my/point-in-defun-declaration-p) '++))))
+           (defun my/statement-block-intro (arg)
              (if
-                 (my/inside-java-lambda-p)
-                 '+
-               (if
-                   (my/is-string-concatenation-p)
-                   16
-                 (unless
-                     (my/point-in-defun-declaration-p)
-                   '++))))
-           (defun my/statement-block-intro
-               (arg)
-             (if
-                 (and
-                  (c-at-statement-start-p)
-                  (my/inside-java-lambda-p))
-                 0 '+))
-           (defun my/block-close
-               (arg)
-             (if
-                 (my/inside-java-lambda-p)
-                 '- 0))
-           (defun my/arglist-close
-               (arg)
-             (if
-                 (my/trailing-paren-p)
-                 0 '--))
-           (defun my/arglist-intro
-               (arg)
-             (if
-                 (my/prev-line-call-with-no-args-p)
-                 '++ 0))
+                 (and (c-at-statement-start-p)
+                      (my/inside-java-lambda-p))
+                 0
+               '+))
+           (defun my/block-close (arg)
+             (if (my/inside-java-lambda-p) '- 0))
+           (defun my/arglist-close (arg)
+             (if (my/trailing-paren-p) 0 '--))
+           (defun my/arglist-intro (arg)
+             (if (my/prev-line-call-with-no-args-p) '++ 0))
            (c-set-offset 'inline-open 0)
            (c-set-offset 'topmost-intro-cont '+)
-           (c-set-offset 'statement-block-intro 'my/statement-block-intro)
+           (c-set-offset 'statement-block-intro
+                         'my/statement-block-intro)
            (c-set-offset 'block-close 'my/block-close)
            (c-set-offset 'knr-argdecl-intro '+)
            (c-set-offset 'substatement-open '+)
            (c-set-offset 'substatement-label '+)
-           (c-set-offset 'case-label '+)
-           (c-set-offset 'label '+)
+           (c-set-offset 'case-label '+) (c-set-offset 'label '+)
            (c-set-offset 'statement-case-open '+)
            (c-set-offset 'statement-cont '++)
            (c-set-offset 'arglist-intro 'my/arglist-intro)
            (c-set-offset 'arglist-cont-nonempty
-                         '(my/arglist-cont-nonempty-indentation c-lineup-arglist))
+                         '(my/arglist-cont-nonempty-indentation
+                           c-lineup-arglist))
            (c-set-offset 'arglist-close 'my/arglist-close)
            (c-set-offset 'inexpr-class 0)
            (c-set-offset 'access-label 0)
