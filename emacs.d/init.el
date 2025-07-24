@@ -44,9 +44,6 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-(use-package use-package-ensure-system-package
-  :ensure t)
-
 ;; Automatically update packages
 (use-package auto-package-update
   :config
