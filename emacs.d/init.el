@@ -85,7 +85,7 @@
   ("C-x g" . magit-status)
   ("C-x M-b" . magit-blame)
   :custom
-  (magit-git-executable "/usr/local/bin/git")
+  (magit-git-executable "git")
   :config
   (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
   (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
