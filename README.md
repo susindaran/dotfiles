@@ -1,11 +1,24 @@
 # ZSH config
 
+## Prerequisites
+
+### Font
+https://github.com/kalaschnik/meslolgs-nf-template
+
+### oh my zsh
+https://ohmyz.sh/
+
+### Powerlevel10k
+https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#oh-my-zsh
+
+### ZSH Autosuggestions
+https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
+
 ## Create symlink
 ```sh
 ln -s dotfiles/zshutil ~/.zshutil
 ln -s dotfiles/zshrc ~/.zshrc
 ```
-
 
 # Emacs Config
 
@@ -15,13 +28,6 @@ ln -s dotfiles/emacs.d ~/.emacs.d
 ```
 
 ## Prerequisites
-### use-package
-Opening emacs for the first time after linking to the config won't load any
-package. `use-package` needs to be installed manually first.
-`M-x package-install<RET>`
-`use-package<RET>`
-
-Close and re-open emacs.
 
 ### The Silver Searcher
 `s-f` and `s-F` is bound to search in the file and search across the project
@@ -32,10 +38,10 @@ Install ag by following the instructions from [here](https://github.com/ggreer/t
 ### fzf
 `s-O` is bound to `helm-fzf-project-root` (find file in project root) which requries fzf
 
-Install fzf by following the instructions from [here](https://github.com/junegunn/fzf/blob/master/README.md#installation) for your platform.
+Install fzf by following the instructions from [here](https://github.com/junegunn/fzf?tab=readme-ov-file#installation) for your platform.
 
 ## Setup ripgrep
-`s-F` is bound to `helm-projectile-rg` (fuzzy search in project root) which required ripgrep.
+`s-F` is bound to `helm-projectile-rg` (fuzzy search in project root) which requires ripgrep.
 
 Install ripgrep by following the instructions from [here](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation) for your platform.
 
@@ -59,3 +65,6 @@ Close and re-open emacs (or `M-x eval-buffer`).
 ### Treemacs
 Treemacs is used as the file-explorer. Use `M-x treemacs-projectile` to add
 projects to the workspace. This is a one time setup.
+
+### Fonts
+M-x nerd-icons-install-fonts
