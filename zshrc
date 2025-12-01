@@ -48,9 +48,8 @@ case "$(uname -s)" in
 
    Darwin)
      autoload -Uz bashcompinit && bashcompinit
-     source ~/.bashrc
-     source ~/.bash_profile
-     eval "$(nodenv init -)"
+     [ -f ~/.bashrc ] && source ~/.bashrc
+     [ -f ~/.bash_profile ] && source ~/.bash_profile
      compdef _git stripe-git=git # this line specifically will fix git autocompletion
      ;;
 
