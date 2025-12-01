@@ -18,7 +18,7 @@
   (load-theme 'doom-molokai t))
 
 ;; Set font-size
-(set-face-attribute 'default nil :height 110)
+(set-face-attribute 'default nil :height 150)
 
 ;; Org-mode font settings
 (require 'org)
