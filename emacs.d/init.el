@@ -318,6 +318,10 @@
 (use-package ruby-settings
   :load-path "settings/ruby-settings.el")
 
+;; Python settings
+(use-package python-settings
+  :ensure nil)
+
 ;; Golang settings
 (use-package go-settings
   :load-path "settings/go-settings.el")
@@ -341,12 +345,18 @@
  ;; If there is more than one, they won't work right.
  '(centaur-tabs-mode t nil (centaur-tabs))
  '(global-flycheck-mode t)
- '(lsp-ui-doc-enable nil)
- '(lsp-ui-doc-header t)
- '(lsp-ui-doc-include-signature t)
- '(markdown-hide-urls t)
  '(org-startup-truncated nil)
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(ace-jump-mode auto-package-update centaur-tabs company-quickhelp
+                   crux doom-modeline doom-themes exec-path-from-shell
+                   go-mode helm-projectile inf-ruby json-mode
+                   lsp-pyright lsp-ui meghanada multiple-cursors
+                   org-bullets puppet-mode rainbow-delimiters
+                   ruby-electric scala-mode smooth-scrolling
+                   terraform-mode tide transpose-frame
+                   treemacs-icons-dired treemacs-magit
+                   treemacs-projectile typescript-mode web-mode
+                   ws-butler yafolding yaml-mode yasnippet-snippets))
  '(safe-local-variable-values
    '((fci-rule-column . 140) (c-comment-only-line-offset 0 . 0)
      (eval progn
