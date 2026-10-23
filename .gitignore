@@ -3,9 +3,11 @@
 auto-save-list
 backups
 elpa/
+/emacs.d/eln-cache/
 *.elc
 ido.last
 projectile-bookmarks.eld
+/emacs.d/projectile-frecency.eld
 session.*
 *.cache
 transient/
